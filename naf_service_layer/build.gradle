@@ -1,5 +1,7 @@
 apply plugin: ('com.android.library')
 apply plugin: ('kotlin-android')
+apply plugin: ('kotlin-kapt')
+apply plugin: ('de.mannodermaus.android-junit5')
 
 apply from: ('config.gradle')
 
@@ -9,6 +11,9 @@ android {
         compileSdkVersion compile_sdk_v
         minSdkVersion min_sdk_v
         targetSdkVersion target_sdk_v
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
     }
     compileOptions {
         sourceCompatibility java_source_сompatibility_v
@@ -22,4 +27,21 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_core_v"
     implementation "com.github.nikolaymenzhulin:flow-response-retrofit-adapter:$flow_response_retrofit_adapter_v"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_v"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_v"
+    testImplementation "com.squareup.okhttp3:okhttp:$okhttp_v"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_v"
+    testImplementation "com.squareup.retrofit2:retrofit:$retrofit_v"
+    testImplementation "com.squareup.retrofit2:converter-gson:$retrofit_v"
+
+    androidTestImplementation "org.junit.jupiter:junit-jupiter-api:$junit_v"
+    androidTestRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_v"
+    androidTestImplementation "androidx.test:core:$android_test_core_v"
+    androidTestImplementation "androidx.test:runner:$android_test_core_v"
+    androidTestImplementation "de.mannodermaus.junit5:android-test-core:$android_test_junit5_v"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:$android_test_junit5_v"
+    androidTestImplementation "androidx.room:room-runtime:$room_v"
+    kaptAndroidTest "androidx.room:room-compiler:$room_v"
+    androidTestImplementation "androidx.room:room-ktx:$room_v"
 }
