@@ -1,0 +1,2 @@
+rootProject.name="Nikolay's Android Framework"
+include ':app'
