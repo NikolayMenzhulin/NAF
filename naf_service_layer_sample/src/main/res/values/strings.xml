@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NAF Service Layer Sample</string>
+
+    <string name="put_user_menu_title">Put user</string>
+    <string name="clear_users_menu_title">Clear users</string>
+
+    <string name="users_list_empty_state">No users…</string>
+    <string name="user_already_exists_state">User already exists</string>
+</resources>

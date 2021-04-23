@@ -1,0 +1,36 @@
+apply plugin: ('com.android.application')
+apply plugin: ('kotlin-android')
+
+apply from: ('config.gradle')
+
+android {
+    defaultConfig {
+        buildToolsVersion build_tools_v
+        compileSdkVersion compile_sdk_v
+        minSdkVersion min_sdk_v
+        targetSdkVersion target_sdk_v
+    }
+    compileOptions {
+        sourceCompatibility java_source_сompatibility_v
+        targetCompatibility java_target_сompatibility_v
+    }
+    kotlinOptions {
+        jvmTarget = kotlin_jvm_target_v
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$appcompat_v"
+    implementation "androidx.core:core-ktx:$core_ktx_v"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime_ktx"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_v"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_v"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_v"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_v"
+    implementation "com.squareup.okhttp3:mockwebserver:$okhttp_v"
+    implementation "com.github.nikolaymenzhulin:flow-response-retrofit-adapter:$flow_response_retrofit_adapter_v"
+    implementation "com.github.nikolaymenzhulin:simple-storage:$simple_storage_v"
+    implementation "com.github.nikolaymenzhulin:logger:$logger_v"
+
+    implementation project(":naf_service_layer")
+}

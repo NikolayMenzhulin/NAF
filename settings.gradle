@@ -1,2 +1,3 @@
 rootProject.name="Nikolay's Android Framework"
 include ':naf_service_layer'
+include ':naf_service_layer_sample'
