@@ -1,3 +1,5 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
 apply plugin: ('com.android.application')
 apply plugin: ('kotlin-android')
 
@@ -20,17 +22,18 @@ android {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:$appcompat_v"
-    implementation "androidx.core:core-ktx:$core_ktx_v"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime_ktx"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_v"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_v"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_v"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_v"
-    implementation "com.squareup.okhttp3:mockwebserver:$okhttp_v"
-    implementation "com.github.nikolaymenzhulin:flow-response-retrofit-adapter:$flow_response_retrofit_adapter_v"
-    implementation "com.github.nikolaymenzhulin:simple-storage:$simple_storage_v"
-    implementation "com.github.nikolaymenzhulin:logger:$logger_v"
-
     implementation project(":naf_service_layer")
+
+    implementation Kotlin.kotlinStdlibJdk8
+    implementation Kotlin.kotlinxCoroutinesCore
+    implementation Android.appCompat
+    implementation Android.Ktx.coreKtx
+    implementation Android.Ktx.lifecycleRuntimeKtx
+    implementation NikolayMenzhulin.flowResponseRetrofitAdapter
+    implementation NikolayMenzhulin.simpleStorage
+    implementation NikolayMenzhulin.logger
+    implementation OkHttp.okHttp
+    implementation OkHttp.mockWebServer
+    implementation Retrofit.retrofit
+    implementation Retrofit.converterGson
 }

@@ -1,3 +1,5 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.GradlePlugin
+
 buildscript {
     apply from: ('config.gradle')
 
@@ -6,9 +8,9 @@ buildscript {
         google()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_v"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_v"
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:$android_junit5_plugin_v"
+        classpath GradlePlugin.gradle
+        classpath GradlePlugin.kotlinGradlePlugin
+        classpath GradlePlugin.androidJUnit5
     }
 }
 

@@ -1,3 +1,5 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
 apply plugin: ('com.android.library')
 apply plugin: ('kotlin-android')
 apply plugin: ('kotlin-kapt')
@@ -25,23 +27,24 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_core_v"
-    implementation "com.github.nikolaymenzhulin:flow-response-retrofit-adapter:$flow_response_retrofit_adapter_v"
+    implementation Kotlin.kotlinStdlibJdk8
+    implementation Kotlin.kotlinxCoroutinesCore
+    implementation NikolayMenzhulin.flowResponseRetrofitAdapter
 
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_v"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_v"
-    testImplementation "com.squareup.okhttp3:okhttp:$okhttp_v"
-    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_v"
-    testImplementation "com.squareup.retrofit2:retrofit:$retrofit_v"
-    testImplementation "com.squareup.retrofit2:converter-gson:$retrofit_v"
+    testImplementation JUnit.junitJupiterApi
+    testRuntimeOnly JUnit.junitJupiterEngine
+    testImplementation OkHttp.okHttp
+    testImplementation OkHttp.mockWebServer
+    testImplementation Retrofit.retrofit
+    testImplementation Retrofit.converterGson
 
-    androidTestImplementation "org.junit.jupiter:junit-jupiter-api:$junit_v"
-    androidTestRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_v"
-    androidTestImplementation "androidx.test:core:$android_test_core_v"
-    androidTestImplementation "androidx.test:runner:$android_test_core_v"
-    androidTestImplementation "de.mannodermaus.junit5:android-test-core:$android_test_junit5_v"
-    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:$android_test_junit5_v"
-    androidTestImplementation "androidx.room:room-runtime:$room_v"
-    kaptAndroidTest "androidx.room:room-compiler:$room_v"
-    androidTestImplementation "androidx.room:room-ktx:$room_v"
+    androidTestImplementation JUnit.junitJupiterApi
+    androidTestRuntimeOnly JUnit.junitJupiterEngine
+    androidTestImplementation JUnit.androidTestCore
+    androidTestRuntimeOnly JUnit.androidTestRunner
+    androidTestImplementation Android.Test.core
+    androidTestImplementation Android.Test.runner
+    androidTestImplementation Room.roomRuntime
+    androidTestImplementation Room.roomKtx
+    kaptAndroidTest Room.roomCompiler
 }
