@@ -1,0 +1,13 @@
+ext {
+    // Compile options
+    java_source_сompatibility_v = JavaVersion.VERSION_1_8
+    java_target_сompatibility_v = JavaVersion.VERSION_1_8
+    kotlin_jvm_target_v = JavaVersion.VERSION_1_8
+
+    // Android configuration
+    build_tools_v = '29.0.3'
+    compile_sdk_v = 29
+    target_sdk_v = 29
+    min_sdk_library_v = 16
+    min_sdk_sample_v = 21
+}

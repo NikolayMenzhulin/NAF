@@ -1,8 +1,6 @@
 import static com.github.nikolaymenzhulin.build_src.Deps.GradlePlugin
 
 buildscript {
-    apply from: ('config.gradle')
-
     repositories {
         jcenter()
         google()
@@ -18,5 +16,13 @@ allprojects {
     repositories {
         jcenter()
         google()
+    }
+    project.ext {
+        def baseBuildConfigsDir = "$rootDir/baseBuildConfigs/"
+        config_gradle = "$baseBuildConfigsDir/config.gradle"
+        android_test_module = "$baseBuildConfigsDir/androidTestModule.gradle"
+        android_base_module = "$baseBuildConfigsDir/androidBaseModule.gradle"
+        android_library_module = "$baseBuildConfigsDir/androidLibraryModule.gradle"
+        android_sample_module = "$baseBuildConfigsDir/androidSampleModule.gradle"
     }
 }

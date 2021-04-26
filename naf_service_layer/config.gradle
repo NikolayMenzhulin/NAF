@@ -1,7 +1,0 @@
-ext {
-    // Android configuration
-    build_tools_v = "29.0.3"
-    compile_sdk_v = 29
-    min_sdk_v = 16
-    target_sdk_v = 29
-}

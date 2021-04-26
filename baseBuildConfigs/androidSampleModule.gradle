@@ -1,0 +1,17 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
+apply plugin: ('com.android.application')
+
+apply from: project.config_gradle
+apply from: project.android_base_module
+
+android {
+    defaultConfig {
+        minSdkVersion min_sdk_sample_v
+    }
+}
+
+dependencies {
+    implementation Android.appCompat
+    implementation Android.Ktx.coreKtx
+}

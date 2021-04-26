@@ -1,49 +1,16 @@
 import static com.github.nikolaymenzhulin.build_src.Deps.*
 
-apply plugin: ('com.android.library')
-apply plugin: ('kotlin-android')
-apply plugin: ('kotlin-kapt')
-apply plugin: ('de.mannodermaus.android-junit5')
-
-apply from: ('config.gradle')
-
-android {
-    defaultConfig {
-        buildToolsVersion build_tools_v
-        compileSdkVersion compile_sdk_v
-        minSdkVersion min_sdk_v
-        targetSdkVersion target_sdk_v
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
-    }
-    compileOptions {
-        sourceCompatibility java_source_сompatibility_v
-        targetCompatibility java_target_сompatibility_v
-    }
-    kotlinOptions {
-        jvmTarget = kotlin_jvm_target_v
-    }
-}
+apply from: project.android_library_module
 
 dependencies {
-    implementation Kotlin.kotlinStdlibJdk8
     implementation Kotlin.kotlinxCoroutinesCore
     implementation NikolayMenzhulin.flowResponseRetrofitAdapter
 
-    testImplementation JUnit.junitJupiterApi
-    testRuntimeOnly JUnit.junitJupiterEngine
     testImplementation OkHttp.okHttp
     testImplementation OkHttp.mockWebServer
     testImplementation Retrofit.retrofit
     testImplementation Retrofit.converterGson
 
-    androidTestImplementation JUnit.junitJupiterApi
-    androidTestRuntimeOnly JUnit.junitJupiterEngine
-    androidTestImplementation JUnit.androidTestCore
-    androidTestRuntimeOnly JUnit.androidTestRunner
-    androidTestImplementation Android.Test.core
-    androidTestImplementation Android.Test.runner
     androidTestImplementation Room.roomRuntime
     androidTestImplementation Room.roomKtx
     kaptAndroidTest Room.roomCompiler
