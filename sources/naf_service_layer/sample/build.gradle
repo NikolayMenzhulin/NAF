@@ -3,7 +3,7 @@ import static com.github.nikolaymenzhulin.build_src.Deps.*
 apply from: project.android_sample_module
 
 dependencies {
-    implementation project(":naf_service_layer")
+    implementation project(':naf_service_layer')
 
     implementation Kotlin.kotlinxCoroutinesCore
     implementation Android.Ktx.lifecycleRuntimeKtx
