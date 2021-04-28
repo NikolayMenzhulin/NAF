@@ -1,0 +1,10 @@
+apply plugin: ('com.android.library')
+
+apply from: project.config_gradle
+apply from: project.android_base_module
+
+android {
+    defaultConfig {
+        minSdkVersion min_sdk_library_v
+    }
+}

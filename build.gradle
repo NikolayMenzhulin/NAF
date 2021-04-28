@@ -1,13 +1,14 @@
-buildscript {
-    apply from: ('config.gradle')
+import static com.github.nikolaymenzhulin.build_src.Deps.GradlePlugin
 
+buildscript {
     repositories {
         jcenter()
         google()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_v"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_v"
+        classpath GradlePlugin.gradle
+        classpath GradlePlugin.kotlinGradlePlugin
+        classpath GradlePlugin.androidJUnit5
     }
 }
 
@@ -15,5 +16,13 @@ allprojects {
     repositories {
         jcenter()
         google()
+    }
+    project.ext {
+        def baseBuildConfigsDir = "$rootDir/baseBuildConfigs/"
+        config_gradle = "$baseBuildConfigsDir/config.gradle"
+        android_test_module = "$baseBuildConfigsDir/androidTestModule.gradle"
+        android_base_module = "$baseBuildConfigsDir/androidBaseModule.gradle"
+        android_library_module = "$baseBuildConfigsDir/androidLibraryModule.gradle"
+        android_sample_module = "$baseBuildConfigsDir/androidSampleModule.gradle"
     }
 }

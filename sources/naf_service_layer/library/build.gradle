@@ -1,0 +1,17 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
+apply from: project.android_library_module
+
+dependencies {
+    implementation Kotlin.kotlinxCoroutinesCore
+    implementation NikolayMenzhulin.flowResponseRetrofitAdapter
+
+    testImplementation OkHttp.okHttp
+    testImplementation OkHttp.mockWebServer
+    testImplementation Retrofit.retrofit
+    testImplementation Retrofit.converterGson
+
+    androidTestImplementation Room.roomRuntime
+    androidTestImplementation Room.roomKtx
+    kaptAndroidTest Room.roomCompiler
+}

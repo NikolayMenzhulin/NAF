@@ -1,0 +1,27 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
+apply plugin: ('de.mannodermaus.android-junit5')
+
+android {
+    defaultConfig {
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunnerArgument('runnerBuilder', 'de.mannodermaus.junit5.AndroidJUnit5Builder')
+    }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+
+dependencies {
+    testImplementation JUnit.junitJupiterApi
+    testRuntimeOnly JUnit.junitJupiterEngine
+
+    androidTestImplementation JUnit.junitJupiterApi
+    androidTestRuntimeOnly JUnit.junitJupiterEngine
+    androidTestImplementation JUnit.androidTestCore
+    androidTestRuntimeOnly JUnit.androidTestRunner
+    androidTestImplementation Android.Test.core
+    androidTestImplementation Android.Test.runner
+}

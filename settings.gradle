@@ -1,2 +1,18 @@
-rootProject.name="Nikolay's Android Framework"
-include ':app'
+rootProject.name = "Nikolay's Android Framework"
+
+def modulesNames = [
+        ["naf_service_layer", "naf_service_layer_sample"]
+]
+
+modulesNames.collectEntries().each {
+    def libraryModuleName = it.key
+    def sampleModuleName = it.value
+
+    include ":$libraryModuleName"
+    project(":$libraryModuleName").projectDir = new File("sources/$libraryModuleName/library")
+
+    if (sampleModuleName != null && sampleModuleName != "") {
+        include ":$sampleModuleName"
+        project(":$sampleModuleName").projectDir = new File("sources/$libraryModuleName/sample")
+    }
+}

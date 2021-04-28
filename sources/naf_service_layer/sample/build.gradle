@@ -1,0 +1,17 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
+apply from: project.android_sample_module
+
+dependencies {
+    implementation project(':naf_service_layer')
+
+    implementation Kotlin.kotlinxCoroutinesCore
+    implementation Android.Ktx.lifecycleRuntimeKtx
+    implementation NikolayMenzhulin.flowResponseRetrofitAdapter
+    implementation NikolayMenzhulin.simpleStorage
+    implementation NikolayMenzhulin.logger
+    implementation OkHttp.okHttp
+    implementation OkHttp.mockWebServer
+    implementation Retrofit.retrofit
+    implementation Retrofit.converterGson
+}
