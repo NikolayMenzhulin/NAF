@@ -1,10 +1,14 @@
 package com.github.nikolaymenzhulin.build_src
 
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Companion.appCompatV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.activityKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.coreKtxV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.fragmentKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.lifecycleRuntimeKtxV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.navigationFragmentKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Test.coreV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Test.runnerV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Dagger.daggerV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.GradlePlugin.androidJUnit5V
 import com.github.nikolaymenzhulin.build_src.DepsVersions.GradlePlugin.gradleV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.GradlePlugin.kotlinGradlePluginV
@@ -46,6 +50,9 @@ sealed class Deps {
 
             const val coreKtx = "androidx.core:core-ktx:$coreKtxV"
             const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeKtxV"
+            const val activityKtx = "androidx.activity:activity-ktx:$activityKtxV"
+            const val fragmentKtx = "androidx.fragment:fragment-ktx:$fragmentKtxV"
+            const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$navigationFragmentKtxV"
         }
 
         object Test : Android() {
@@ -62,6 +69,12 @@ sealed class Deps {
 
         const val simpleStorage = "com.github.nikolaymenzhulin:simple-storage:$simpleStorageV"
         const val logger = "com.github.nikolaymenzhulin:logger:$loggerV"
+    }
+
+    object Dagger : Deps() {
+
+        const val dagger = "com.google.dagger:dagger:$daggerV"
+        const val daggerCompiler = "com.google.dagger:dagger-compiler:$daggerV"
     }
 
     object OkHttp : Deps() {

@@ -1,0 +1,21 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
+apply from: project.android_library_module
+
+android {
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation Android.appCompat
+    implementation Android.Ktx.coreKtx
+    implementation Android.Ktx.lifecycleRuntimeKtx
+    implementation Android.Ktx.activityKtx
+    implementation Android.Ktx.fragmentKtx
+    implementation Android.Ktx.navigationFragmentKtx
+    implementation NikolayMenzhulin.flowResponseRetrofitAdapter
+    implementation Dagger.dagger
+    kapt Dagger.daggerCompiler
+}

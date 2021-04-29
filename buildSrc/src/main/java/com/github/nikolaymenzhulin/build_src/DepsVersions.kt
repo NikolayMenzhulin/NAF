@@ -25,7 +25,10 @@ sealed class DepsVersions {
         object Ktx : Android() {
 
             const val coreKtxV = "1.3.2"
-            const val lifecycleRuntimeKtxV = "2.3.1"
+            const val lifecycleRuntimeKtxV = "2.4.0-alpha01"
+            const val activityKtxV = "1.2.2"
+            const val fragmentKtxV = "1.3.3"
+            const val navigationFragmentKtxV = "2.3.5"
         }
 
         object Test : Android() {
@@ -40,6 +43,11 @@ sealed class DepsVersions {
         const val flowResponseRetrofitAdapterV = "1.2.1"
         const val simpleStorageV = "1.0.1"
         const val loggerV = "1.1.1"
+    }
+
+    object Dagger : DepsVersions() {
+
+        const val daggerV = "2.34"
     }
 
     object OkHttp : DepsVersions() {
