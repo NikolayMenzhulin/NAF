@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/graph_navigation_activity_test"
+    app:startDestination="@id/test_navigation_activity_fragment_a">
+
+    <fragment
+        android:id="@+id/test_navigation_activity_fragment_a"
+        android:name="com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.fragment.TestNavigationActivityFragmentA"
+        android:label="TestNavigationActivityFragmentA">
+
+        <action
+            android:id="@+id/action_fragment_a_to_fragment_b"
+            app:destination="@id/test_navigation_activity_fragment_b" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/test_navigation_activity_fragment_b"
+        android:name="com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.fragment.TestNavigationActivityFragmentB"
+        android:label="TestNavigationActivityFragmentB" />
+
+</navigation>

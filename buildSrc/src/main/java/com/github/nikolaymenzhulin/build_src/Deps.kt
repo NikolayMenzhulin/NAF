@@ -1,13 +1,14 @@
 package com.github.nikolaymenzhulin.build_src
 
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Companion.appCompatV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Companion.multidexV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.activityKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.coreKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.fragmentKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.lifecycleRuntimeKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.navigationFragmentKtxV
-import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Test.coreV
-import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Test.runnerV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Test.baseTestDepsV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Test.espressoV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Dagger.daggerV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.GradlePlugin.androidJUnit5V
 import com.github.nikolaymenzhulin.build_src.DepsVersions.GradlePlugin.gradleV
@@ -44,6 +45,7 @@ sealed class Deps {
         companion object {
 
             const val appCompat = "androidx.appcompat:appcompat:$appCompatV"
+            const val multidex = "androidx.multidex:multidex:$multidexV"
         }
 
         object Ktx : Android() {
@@ -57,8 +59,9 @@ sealed class Deps {
 
         object Test : Android() {
 
-            const val core = "androidx.test:core:$coreV"
-            const val runner = "androidx.test:runner:$runnerV"
+            const val core = "androidx.test:core:$baseTestDepsV"
+            const val runner = "androidx.test:runner:$baseTestDepsV"
+            const val espresso = "androidx.test.espresso:espresso-core:$espressoV"
         }
     }
 

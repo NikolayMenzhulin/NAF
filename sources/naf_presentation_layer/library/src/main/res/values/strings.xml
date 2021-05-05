@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="increase_btn_text">Increase</string>
+    <string name="go_to_fragment_b_btn_text">Go to Fragment B</string>
+    <string name="create_flow_response_btn_text">Create error FlowResponse</string>
+</resources>

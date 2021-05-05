@@ -18,4 +18,9 @@ dependencies {
     implementation NikolayMenzhulin.flowResponseRetrofitAdapter
     implementation Dagger.dagger
     kapt Dagger.daggerCompiler
+
+    kaptTest Dagger.daggerCompiler
+
+    androidTestImplementation NikolayMenzhulin.logger
+    kaptAndroidTest Dagger.daggerCompiler
 }

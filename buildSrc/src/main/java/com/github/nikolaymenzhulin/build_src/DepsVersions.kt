@@ -20,6 +20,7 @@ sealed class DepsVersions {
         companion object {
 
             const val appCompatV = "1.2.0"
+            const val multidexV = "2.0.1"
         }
 
         object Ktx : Android() {
@@ -33,8 +34,8 @@ sealed class DepsVersions {
 
         object Test : Android() {
 
-            const val coreV = "1.3.0"
-            const val runnerV = "1.3.0"
+            const val baseTestDepsV = "1.3.0"
+            const val espressoV = "3.3.0"
         }
     }
 

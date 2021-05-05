@@ -1,0 +1,15 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.AbstractViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.common_deps.CommonViewModelDeps
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.factory.ViewModelAssistedFactory
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
+
+class TestFragmentHostActivityViewModel @AssistedInject constructor(
+    @Assisted commonDeps: CommonViewModelDeps
+) : AbstractViewModel(commonDeps)
+
+@AssistedFactory
+interface TestFragmentHostActivityViewModelFactory : ViewModelAssistedFactory<TestFragmentHostActivityViewModel>
