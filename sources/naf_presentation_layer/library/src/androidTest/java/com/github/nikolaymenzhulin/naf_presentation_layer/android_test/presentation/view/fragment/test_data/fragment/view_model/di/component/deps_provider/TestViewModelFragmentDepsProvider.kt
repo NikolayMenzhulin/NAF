@@ -1,0 +1,3 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.view_model.di.component.deps_provider
+
+interface TestViewModelFragmentDepsProvider

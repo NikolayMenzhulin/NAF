@@ -1,6 +1,7 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.injectable
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.injectable.di.injector.TestInjectableActivityInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.InjectableActivity
 import javax.inject.Inject
 

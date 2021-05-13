@@ -10,8 +10,10 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.base.DaggerM
  */
 abstract class AbstractComponentHolder<C : DaggerComponent, M : DaggerModule> {
 
-    var component: C? = null
-        private set
+    val component: C
+        get() = _component ?: throw IllegalStateException("The component isn't initialized")
+
+    private var _component: C? = null
 
     /**
      * Инициализировать [component], если он ещё не был инициализирован.
@@ -19,15 +21,15 @@ abstract class AbstractComponentHolder<C : DaggerComponent, M : DaggerModule> {
      * @param module Dagger-модуль, который будет использоваться при создании [component]
      */
     fun initComponent(module: M) {
-        if (component != null) return
-        component = getComponentImpl(module)
+        if (_component != null) return
+        _component = getComponentImpl(module)
     }
 
     /**
      * Очистить [component], хранящийся в контейнере.
      */
     fun clearComponent() {
-        component = null
+        _component = null
     }
 
     /**

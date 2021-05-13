@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.view_model.di.injector.TestViewModelFragmentInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.ViewModelFragment
 
 class TestViewModelFragment : ViewModelFragment<TestViewModelFragmentViewModel>(R.layout.fragment_view_model_test) {

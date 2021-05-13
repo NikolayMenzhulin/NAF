@@ -1,13 +1,14 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.injectable.TestInjectableActivity
-import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.injectable.TestInjectableActivityInjector
-import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.injectable.TestInjectableActivityInjector.TestInjectableActivityComponent
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.injectable.di.holder.TestInjectableActivityComponentHolder
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.DaggerComponent
 import de.mannodermaus.junit5.ActivityScenarioExtension
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.RegisterExtension
 
 class InjectableActivityTest {
@@ -24,10 +25,9 @@ class InjectableActivityTest {
     @Test
     @DisplayName("Check creating of a view component")
     fun checkCreatingViewComponent() {
-        activity.scenario.onActivity { activity ->
-            val viewComponent: DaggerComponent? = activity.injector.component
+        activity.scenario.onActivity {
+            val viewComponent: DaggerComponent = TestInjectableActivityComponentHolder.component
             assertNotNull(viewComponent)
-            assertTrue { viewComponent is TestInjectableActivityComponent }
         }
     }
 
@@ -44,12 +44,9 @@ class InjectableActivityTest {
     @Test
     @DisplayName("Check destroying of a view component")
     fun checkDestroyingViewComponent() {
-        var injector: TestInjectableActivityInjector? = null
-        activity.scenario.apply {
-            onActivity { injector = it.injector }
-            close()
+        activity.scenario.close()
+        assertThrows<IllegalStateException> {
+            TestInjectableActivityComponentHolder.component
         }
-        assertNull(injector!!.component)
-        injector = null
     }
 }

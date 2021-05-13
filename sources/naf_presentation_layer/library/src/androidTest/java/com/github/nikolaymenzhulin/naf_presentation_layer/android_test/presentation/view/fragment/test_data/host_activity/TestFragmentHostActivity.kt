@@ -1,6 +1,7 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity
 
 import androidx.activity.viewModels
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity.di.injector.TestFragmentHostActivityInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.databinding.ActivityFragmentHostTestBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.AbstractActivity
 import com.github.nikolaymenzhulin.naf_presentation_layer.test.R

@@ -1,16 +1,16 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder
 
-import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.component.TestComponent
 import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.holder.TestComponentHolder
 import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.module.TestModule
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ComponentHolderTest {
 
-    @BeforeEach
-    fun setUp() {
+    @AfterEach
+    fun tearDown() {
         TestComponentHolder.clearComponent()
     }
 
@@ -18,7 +18,6 @@ class ComponentHolderTest {
     fun `Check initialization of a component inside a holder`() {
         TestComponentHolder.initComponent(module = TestModule())
         assertNotNull(TestComponentHolder.component)
-        assertTrue { TestComponentHolder.component is TestComponent }
     }
 
     @Test
@@ -27,6 +26,6 @@ class ComponentHolderTest {
             initComponent(module = TestModule())
             clearComponent()
         }
-        assertNull(TestComponentHolder.component)
+        assertThrows<IllegalStateException> { TestComponentHolder.component }
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_a.di.injector.TestNavigationFragmentAInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.databinding.FragmentNavigationATestBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.NavigationFragment
 

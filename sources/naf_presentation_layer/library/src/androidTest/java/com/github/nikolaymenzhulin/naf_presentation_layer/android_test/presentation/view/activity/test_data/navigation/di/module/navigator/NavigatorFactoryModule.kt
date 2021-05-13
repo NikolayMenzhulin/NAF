@@ -1,0 +1,11 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.di.module.navigator
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.TestNavigationActivityNavigator
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.TestNavigationActivityNavigatorFactory
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.TestNavigationActivityViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.binds.BaseNavigatorFactoryModule
+import dagger.Module
+
+@Module
+interface NavigatorFactoryModule :
+    BaseNavigatorFactoryModule<TestNavigationActivityNavigatorFactory, TestNavigationActivityNavigator, TestNavigationActivityViewModel>

@@ -2,6 +2,7 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presenta
 
 import androidx.fragment.app.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_b.di.injector.TestNavigationFragmentBInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.databinding.FragmentNavigationBTestBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.NavigationFragment
 

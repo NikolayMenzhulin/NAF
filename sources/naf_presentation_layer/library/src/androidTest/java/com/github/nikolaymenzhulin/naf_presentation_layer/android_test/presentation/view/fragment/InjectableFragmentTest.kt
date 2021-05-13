@@ -2,13 +2,14 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presenta
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.base.BaseFragmentTest
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.TestInjectableFragment
-import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.TestInjectableFragmentInjector
-import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.TestInjectableFragmentInjector.TestInjectableFragmentComponent
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.di.holder.TestInjectableFragmentComponentHolder
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.DaggerComponent
 import com.github.nikolaymenzhulin.naf_presentation_layer.test.R
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class InjectableFragmentTest : BaseFragmentTest(R.navigation.graph_injectable_fragment_test) {
 
@@ -20,10 +21,9 @@ class InjectableFragmentTest : BaseFragmentTest(R.navigation.graph_injectable_fr
     @Test
     @DisplayName("Check creating of a view component")
     fun checkCreatingViewComponent() {
-        val fragment: TestInjectableFragment = getTestFragment()
-        val viewComponent: DaggerComponent? = fragment.injector.component
+        getTestFragment<TestInjectableFragment>()
+        val viewComponent: DaggerComponent = TestInjectableFragmentComponentHolder.component
         assertNotNull(viewComponent)
-        assertTrue { viewComponent is TestInjectableFragmentComponent }
     }
 
     @Test
@@ -38,9 +38,9 @@ class InjectableFragmentTest : BaseFragmentTest(R.navigation.graph_injectable_fr
     @Test
     @DisplayName("Check destroying of a view component")
     fun checkDestroyingViewComponent() {
-        val fragment: TestInjectableFragment = getTestFragment()
-        val injector: TestInjectableFragmentInjector = fragment.injector
         activity.scenario.close()
-        assertNull(injector.component)
+        assertThrows<IllegalStateException> {
+            TestInjectableFragmentComponentHolder.component
+        }
     }
 }

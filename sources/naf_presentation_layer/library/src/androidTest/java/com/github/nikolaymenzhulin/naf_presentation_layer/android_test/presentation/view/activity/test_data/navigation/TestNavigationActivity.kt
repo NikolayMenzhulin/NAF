@@ -3,6 +3,7 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presenta
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.di.injector.TestNavigationActivityInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.databinding.ActivityNavigationTestBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.NavigationActivity
 

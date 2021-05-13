@@ -1,0 +1,11 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_b.di.module.navigator
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_b.TestNavigationFragmentBNavigator
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_b.TestNavigationFragmentBNavigatorFactory
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_b.TestNavigationFragmentBViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.binds.BaseNavigatorFactoryModule
+import dagger.Module
+
+@Module
+interface NavigatorFactoryModule :
+    BaseNavigatorFactoryModule<TestNavigationFragmentBNavigatorFactory, TestNavigationFragmentBNavigator, TestNavigationFragmentBViewModel>

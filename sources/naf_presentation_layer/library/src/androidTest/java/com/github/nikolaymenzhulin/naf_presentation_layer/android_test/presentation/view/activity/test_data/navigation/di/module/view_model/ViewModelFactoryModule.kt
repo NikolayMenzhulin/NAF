@@ -1,0 +1,8 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.di.module.view_model
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.navigation.TestNavigationActivityViewModelFactory
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.binds.BaseViewModelFactoryModule
+import dagger.Module
+
+@Module
+interface ViewModelFactoryModule : BaseViewModelFactoryModule<TestNavigationActivityViewModelFactory>

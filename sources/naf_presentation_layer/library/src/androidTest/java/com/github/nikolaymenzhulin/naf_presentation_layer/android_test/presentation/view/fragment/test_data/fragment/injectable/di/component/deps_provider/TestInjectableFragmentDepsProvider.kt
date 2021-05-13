@@ -1,0 +1,3 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.di.component.deps_provider
+
+interface TestInjectableFragmentDepsProvider

@@ -10,11 +10,21 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base
 interface ViewInjector<V : InjectableView, M : DaggerModule> : Injector {
 
     /**
-     * Получить Dagger-компонент для view, который будет использоваться для инъекции зависимостей.
+     * Инициализировать Dagger-компонент для view.
      *
      * @param module Dagger-модуль, который будет использоваться при создании компонента
+     */
+    fun initComponent(module: M)
+
+    /**
+     * Получить Dagger-компонент для view, который будет использоваться для инъекции зависимостей.
      *
      * @return компонент для view
      */
-    fun getViewComponent(module: M): ViewComponent<V>
+    fun getViewComponent(): ViewComponent<V>
+
+    /**
+     * Очистить Dagger-компонент для view.
+     */
+    fun clearComponent()
 }

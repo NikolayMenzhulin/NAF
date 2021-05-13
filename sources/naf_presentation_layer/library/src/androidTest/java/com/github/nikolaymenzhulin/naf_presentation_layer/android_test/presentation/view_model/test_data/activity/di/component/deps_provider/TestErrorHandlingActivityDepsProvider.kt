@@ -1,0 +1,3 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view_model.test_data.activity.di.component.deps_provider
+
+interface TestErrorHandlingActivityDepsProvider

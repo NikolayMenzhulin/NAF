@@ -1,6 +1,7 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.di.injector.TestInjectableFragmentInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.InjectableFragment
 import javax.inject.Inject
 
