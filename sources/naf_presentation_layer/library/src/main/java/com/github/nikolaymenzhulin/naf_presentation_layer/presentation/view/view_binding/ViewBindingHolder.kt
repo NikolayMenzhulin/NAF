@@ -13,7 +13,7 @@ import androidx.viewbinding.ViewBinding
  * @property vb view binding, хранящийся в контейнере
  */
 @Suppress("UNCHECKED_CAST")
-class ViewBindingHolder<VB : ViewBinding>(private val vbClass: Class<VB>) {
+internal class ViewBindingHolder<VB : ViewBinding>(private val vbClass: Class<VB>) {
 
     var vb: VB? = null
         private set

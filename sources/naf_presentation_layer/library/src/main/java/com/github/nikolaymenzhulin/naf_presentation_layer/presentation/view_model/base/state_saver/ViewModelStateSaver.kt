@@ -3,7 +3,7 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mod
 /**
  * Базовый интерфейс для view model с поддержкой сохранения состояния.
  */
-interface ViewModelStateSaver {
+internal interface ViewModelStateSaver {
 
     /**
      * Callback для сохранения состояния view model.

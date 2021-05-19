@@ -7,7 +7,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base
 /**
  * Базовый интерфейс для класса - инжектора зависимостей во view.
  */
-interface ViewInjector<V : InjectableView, M : DaggerModule> : Injector {
+internal interface ViewInjector<V : InjectableView, M : DaggerModule> : Injector {
 
     /**
      * Инициализировать Dagger-компонент для view.
