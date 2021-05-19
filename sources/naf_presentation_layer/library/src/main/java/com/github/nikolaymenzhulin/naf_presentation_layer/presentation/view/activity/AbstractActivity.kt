@@ -2,16 +2,16 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.act
 
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.AbstractNavigator
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.terrakok.cicerone.Navigator
 
 /**
- * Базовый класс для реализации activity с поддержкой инъекции зависимостей, а также работы с view model, view binding и navigator.
+ * Базовый класс для реализации activity с поддержкой инъекции зависимостей, работы с view model, view binding и с навигацией.
  *
  * @param contentLayoutId layout id вёрстки для activity
  * @param vbClass класс view binding, связанный с activity
  */
-abstract class AbstractActivity<VM : BaseViewModel, VB : ViewBinding, N : AbstractNavigator<VM>>(
+abstract class AbstractActivity<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
 ) : LifecycleWrapperActivity<VM, VB, N>(contentLayoutId, vbClass) {

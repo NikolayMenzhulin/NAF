@@ -6,7 +6,8 @@ import androidx.annotation.LayoutRes
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.SavedStateViewModel
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.factory.ViewModelFactory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -30,23 +31,17 @@ abstract class ViewModelActivity<VM : BaseViewModel>(
 
     protected abstract val vm: VM
 
-    /**
-     * Callback для подписки на данные из view model.
-     * Вызывается на этапе выполнения onCreate, после вызова super.onCreate.
-     */
-    protected abstract fun onObserveViewModelData()
-
     final override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory =
         vmFactory.create(this, intent.extras)
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        vm.onSaveInstantState()
+        (vm as? SavedStateViewModel)?.onSaveInstantState()
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
-        vm.onSaveInstantState()
+        (vm as? SavedStateViewModel)?.onSaveInstantState()
     }
 
     /**

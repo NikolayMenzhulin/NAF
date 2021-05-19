@@ -14,7 +14,7 @@ class UserGenerator {
         "Kenneth",
         "Patricia",
         "Paul",
-        "Davis",
+        "Davis"
     )
 
     private val randomSurnames = listOf(
@@ -27,7 +27,7 @@ class UserGenerator {
         "Lopez",
         "Lucas",
         "Garza",
-        "Davis",
+        "Davis"
     )
 
     fun generateName(): String = randomNames.getRandom()

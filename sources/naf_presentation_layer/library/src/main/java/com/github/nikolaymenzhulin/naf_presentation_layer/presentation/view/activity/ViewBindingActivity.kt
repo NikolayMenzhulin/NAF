@@ -10,7 +10,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingCreateMethodType.BIND
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingCreateMethodType.INFLATE
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingHolder
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
  * Базовая activity с поддержкой работы с view binding.
@@ -28,7 +28,7 @@ abstract class ViewBindingActivity<VM : BaseViewModel, VB : ViewBinding>(
 
     protected val vb: VB
         get() = vbHolder.vb
-            ?: throw IllegalStateException("An error occurred while creating ViewBinding instance")
+            ?: throw IllegalStateException("The view binding has not been initialized yet")
 
     private var vbHolder: ViewBindingHolder<VB> = ViewBindingHolder(vbClass)
 

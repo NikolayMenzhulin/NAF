@@ -8,7 +8,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.cr
 /**
  * The screen that generates an age for the user being created.
  */
-class GenerateAgeFragment : BaseGenerateUserFragment<GenerateAgeFragmentViewModel, GenerateAgeFragmentNavigator>() {
+class GenerateAgeFragment : BaseGenerateUserFragment<GenerateAgeFragmentViewModel>() {
 
     override val toolbarTitleResId: Int = R.string.generate_age_toolbar_title
 
@@ -21,12 +21,12 @@ class GenerateAgeFragment : BaseGenerateUserFragment<GenerateAgeFragmentViewMode
     override val injector = GenerateAgeFragmentInjector(this)
 
     override fun initListeners() {
-        super.initListeners()
+        vb.toolbar.root.setNavigationOnClickListener { vm.exit() }
         vb.generateUserDataBtn.setOnClickListener { vm.generateUserAge() }
-        vb.nextStepBtn.setOnClickListener { navigator.backToUserListScreen() }
+        vb.nextStepBtn.setOnClickListener { vm.backToUserListScreen() }
     }
 
-    override fun onObserveViewModelData() {
+    override fun onObserveViewModelCallback() {
         vm.userAge.observe(this, ::setUserData)
     }
 }

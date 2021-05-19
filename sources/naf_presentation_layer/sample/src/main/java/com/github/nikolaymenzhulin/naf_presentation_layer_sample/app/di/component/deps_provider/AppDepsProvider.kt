@@ -1,7 +1,9 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer_sample.app.di.component.deps_provider
 
-import com.github.nikolaymenzhulin.naf_presentation_layer.util.helpers.error_handler.base.ErrorHandler
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.error_handler.ErrorHandler
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.app.di.component.AppComponent
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
 
 /**
  * DepsProvider for [AppComponent].
@@ -9,4 +11,6 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.app.di.componen
 interface AppDepsProvider {
 
     fun provideDefaultErrorHandler(): ErrorHandler
+    fun provideRouter(): Router
+    fun provideNavigatorHolder(): NavigatorHolder
 }

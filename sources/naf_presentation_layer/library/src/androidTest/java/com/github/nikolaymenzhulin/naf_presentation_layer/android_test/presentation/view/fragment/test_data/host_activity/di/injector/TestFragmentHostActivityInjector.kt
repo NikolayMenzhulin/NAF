@@ -7,12 +7,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.ViewCompo
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.injector.AbstractViewInjector
 
 class TestFragmentHostActivityInjector(
-    view: TestFragmentHostActivity,
-    module: TestFragmentHostActivityModule = TestFragmentHostActivityModule(view)
-) : AbstractViewInjector<TestFragmentHostActivity, TestFragmentHostActivityModule>(view, module) {
+    private val view: TestFragmentHostActivity
+) : AbstractViewInjector<TestFragmentHostActivity>(view) {
 
-    override fun initComponent(module: TestFragmentHostActivityModule) {
-        TestFragmentHostActivityComponentHolder.initComponent(module)
+    override fun initComponent() {
+        TestFragmentHostActivityComponentHolder.initComponent(TestFragmentHostActivityModule(view))
     }
 
     override fun getViewComponent(): ViewComponent<TestFragmentHostActivity> =

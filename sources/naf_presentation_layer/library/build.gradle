@@ -14,13 +14,13 @@ dependencies {
     implementation Android.Ktx.lifecycleRuntimeKtx
     implementation Android.Ktx.activityKtx
     implementation Android.Ktx.fragmentKtx
-    implementation Android.Ktx.navigationFragmentKtx
     implementation NikolayMenzhulin.flowResponseRetrofitAdapter
+    implementation NikolayMenzhulin.logger
+    implementation Cicerone.cicerone
     implementation Dagger.dagger
     kapt Dagger.daggerCompiler
 
     kaptTest Dagger.daggerCompiler
 
-    androidTestImplementation NikolayMenzhulin.logger
     kaptAndroidTest Dagger.daggerCompiler
 }

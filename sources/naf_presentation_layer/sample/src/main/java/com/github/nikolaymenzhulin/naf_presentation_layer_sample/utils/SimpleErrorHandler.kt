@@ -1,7 +1,7 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer_sample.utils
 
 import com.github.nikolaymenzhulin.logger.Logger
-import com.github.nikolaymenzhulin.naf_presentation_layer.util.helpers.error_handler.base.ErrorHandler
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.error_handler.ErrorHandler
 
 class SimpleErrorHandler : ErrorHandler {
 

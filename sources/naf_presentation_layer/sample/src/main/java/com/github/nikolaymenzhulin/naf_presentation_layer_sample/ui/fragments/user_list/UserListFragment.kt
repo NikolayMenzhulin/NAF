@@ -9,11 +9,12 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.databinding.Fra
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.di.holder.CreateUserComponentHolder
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.di.module.CreateUserModule
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.user_list.di.injector.UserListFragmentInjector
+import com.github.terrakok.cicerone.androidx.AppNavigator
 
 /**
  * The screen with a list of created users.
  */
-class UserListFragment : AbstractFragment<UserListFragmentViewModel, FragmentUserListBinding, UserListFragmentNavigator>(
+class UserListFragment : AbstractFragment<UserListFragmentViewModel, FragmentUserListBinding, AppNavigator>(
     FragmentUserListBinding::class.java
 ) {
 
@@ -21,11 +22,13 @@ class UserListFragment : AbstractFragment<UserListFragmentViewModel, FragmentUse
 
     override val injector = UserListFragmentInjector(this)
 
+    override fun createNavigator() = AppNavigator(requireActivity(), R.id.fragment_container)
+
     override fun onViewCreatedCallback(view: View, savedInstanceState: Bundle?) {
         initToolbar()
     }
 
-    override fun onObserveViewModelData() {
+    override fun onObserveViewModelCallback() {
         vm.userList.observe(this) { users ->
             vb.userListTv.text =
                 if (users.isEmpty()) {
@@ -44,7 +47,7 @@ class UserListFragment : AbstractFragment<UserListFragmentViewModel, FragmentUse
 
         fun onMenuItemClick(): Boolean {
             CreateUserComponentHolder.initComponent(CreateUserModule())
-            navigator.goToCreateUserFlow()
+            vm.goToCreateUserFlow()
             return true
         }
 

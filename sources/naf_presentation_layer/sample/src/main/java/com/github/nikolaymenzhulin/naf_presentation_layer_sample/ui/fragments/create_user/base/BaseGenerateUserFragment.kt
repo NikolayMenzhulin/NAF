@@ -5,25 +5,28 @@ import android.view.View
 import androidx.annotation.CallSuper
 import androidx.core.content.ContextCompat
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.AbstractFragment
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.AbstractNavigator
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.R
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.databinding.FragmentGenerateUserBinding
+import com.github.terrakok.cicerone.androidx.AppNavigator
 
-abstract class BaseGenerateUserFragment<VM : BaseViewModel, N : AbstractNavigator<VM>> :
-    AbstractFragment<VM, FragmentGenerateUserBinding, N>(
-        FragmentGenerateUserBinding::class.java
-    ) {
+abstract class BaseGenerateUserFragment<VM : BaseViewModel> : AbstractFragment<VM, FragmentGenerateUserBinding, AppNavigator>(
+    FragmentGenerateUserBinding::class.java
+) {
 
     protected abstract val toolbarTitleResId: Int
     protected abstract val userDataTvTextResId: Int
     protected abstract val nextStepBtnTextResId: Int
+
+    override fun createNavigator() = AppNavigator(requireActivity(), R.id.fragment_container)
 
     @CallSuper
     override fun onViewCreatedCallback(view: View, savedInstanceState: Bundle?) {
         initViews()
         initListeners()
     }
+
+    protected abstract fun initListeners()
 
     protected fun setUserData(data: String) {
         vb.nextStepBtn.isEnabled = data.isNotEmpty()
@@ -33,11 +36,6 @@ abstract class BaseGenerateUserFragment<VM : BaseViewModel, N : AbstractNavigato
                 setTextColor(ContextCompat.getColor(context, android.R.color.black))
             }
         }
-    }
-
-    @CallSuper
-    protected open fun initListeners() {
-        vb.toolbar.root.setNavigationOnClickListener { navigator.finish() }
     }
 
     private fun initViews() {

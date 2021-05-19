@@ -29,7 +29,6 @@ sealed class DepsVersions {
             const val lifecycleRuntimeKtxV = "2.3.1"
             const val activityKtxV = "1.2.2"
             const val fragmentKtxV = "1.3.3"
-            const val navigationFragmentKtxV = "2.3.5"
         }
 
         object Test : Android() {
@@ -49,6 +48,11 @@ sealed class DepsVersions {
     object Dagger : DepsVersions() {
 
         const val daggerV = "2.34"
+    }
+
+    object Cicerone : DepsVersions() {
+
+        const val ciceroneV = "7.0"
     }
 
     object OkHttp : DepsVersions() {

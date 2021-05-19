@@ -1,20 +1,17 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.di.injector.base
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.ViewComponent
-import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.base.DaggerModule
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base.InjectableView
 
 /**
  * Базовый интерфейс для класса - инжектора зависимостей во view.
  */
-internal interface ViewInjector<V : InjectableView, M : DaggerModule> : Injector {
+internal interface ViewInjector<V : InjectableView> : Injector {
 
     /**
      * Инициализировать Dagger-компонент для view.
-     *
-     * @param module Dagger-модуль, который будет использоваться при создании компонента
      */
-    fun initComponent(module: M)
+    fun initComponent()
 
     /**
      * Получить Dagger-компонент для view, который будет использоваться для инъекции зависимостей.

@@ -2,16 +2,16 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fra
 
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.AbstractNavigator
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.terrakok.cicerone.Navigator
 
 /**
- * Базовый класс для реализации fragment с поддержкой инъекции зависимостей, а также работы с view model, view binding и navigator.
+ * Базовый класс для реализации fragment с поддержкой инъекции зависимостей, работы с view model, view binding и с навигацией.
  *
  * @param contentLayoutId layout id вёрстки для fragment
  * @param vbClass класс view binding, связанный с fragment
  */
-abstract class AbstractFragment<VM : BaseViewModel, VB : ViewBinding, N : AbstractNavigator<VM>>(
+abstract class AbstractFragment<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
 ) : LifecycleWrapperFragment<VM, VB, N>(contentLayoutId, vbClass) {

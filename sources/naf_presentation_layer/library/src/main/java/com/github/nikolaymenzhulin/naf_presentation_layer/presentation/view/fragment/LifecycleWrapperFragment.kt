@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.AbstractNavigator
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.terrakok.cicerone.Navigator
 
 /**
  * Базовый fragment, оборачивающий основные методы жизненного цикла.
@@ -16,7 +16,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
  * @param contentLayoutId layout id вёрстки для fragment
  * @param vbClass класс view binding, связанный с fragment
  */
-abstract class LifecycleWrapperFragment<VM : BaseViewModel, VB : ViewBinding, N : AbstractNavigator<VM>>(
+abstract class LifecycleWrapperFragment<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
 ) : NavigationFragment<VM, VB, N>(contentLayoutId, vbClass) {
@@ -42,7 +42,7 @@ abstract class LifecycleWrapperFragment<VM : BaseViewModel, VB : ViewBinding, N 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onViewCreatedCallback(view, savedInstanceState)
-        onObserveViewModelData()
+        onObserveViewModelCallback()
     }
 
     @Suppress("DEPRECATION")
@@ -151,4 +151,10 @@ abstract class LifecycleWrapperFragment<VM : BaseViewModel, VB : ViewBinding, N 
     protected open fun onDetachCallback() {
         // Empty realization.
     }
+
+    /**
+     * Callback для подписки на данные из view model.
+     * Вызывается на этапе выполнения onViewCreated, после вызовов super.onViewCreated и onViewCreatedCallback.
+     */
+    protected abstract fun onObserveViewModelCallback()
 }

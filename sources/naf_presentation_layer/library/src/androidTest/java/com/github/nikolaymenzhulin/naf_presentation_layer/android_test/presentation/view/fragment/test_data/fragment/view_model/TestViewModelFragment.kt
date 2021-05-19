@@ -22,18 +22,7 @@ class TestViewModelFragment : ViewModelFragment<TestViewModelFragmentViewModel>(
         super.onViewCreated(view, savedInstanceState)
         initViews(view)
         initListeners()
-    }
-
-    @Suppress("DEPRECATION")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        onObserveViewModelData()
-    }
-
-    override fun onObserveViewModelData() {
-        vm.currentNumber.observe(this) { currentNumber ->
-            currentNumberTv.text = currentNumber
-        }
+        observeViewModel()
     }
 
     private fun initViews(view: View) {
@@ -43,5 +32,11 @@ class TestViewModelFragment : ViewModelFragment<TestViewModelFragmentViewModel>(
 
     private fun initListeners() {
         increaseBtn.setOnClickListener { vm.increaseCurrentNumber() }
+    }
+
+    private fun observeViewModel() {
+        vm.currentNumber.observe(this) { currentNumber ->
+            currentNumberTv.text = currentNumber
+        }
     }
 }

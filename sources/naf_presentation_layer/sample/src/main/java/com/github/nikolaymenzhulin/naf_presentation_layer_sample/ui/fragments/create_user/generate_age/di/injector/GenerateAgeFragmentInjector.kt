@@ -10,12 +10,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.cr
  * Injector for [GenerateAgeFragment].
  */
 class GenerateAgeFragmentInjector(
-    view: GenerateAgeFragment,
-    module: GenerateAgeFragmentModule = GenerateAgeFragmentModule(view)
-) : AbstractViewInjector<GenerateAgeFragment, GenerateAgeFragmentModule>(view, module) {
+    private val view: GenerateAgeFragment
+) : AbstractViewInjector<GenerateAgeFragment>(view) {
 
-    override fun initComponent(module: GenerateAgeFragmentModule) {
-        GenerateAgeFragmentComponentHolder.initComponent(module)
+    override fun initComponent() {
+        GenerateAgeFragmentComponentHolder.initComponent(GenerateAgeFragmentModule(view))
     }
 
     override fun getViewComponent(): ViewComponent<GenerateAgeFragment> =

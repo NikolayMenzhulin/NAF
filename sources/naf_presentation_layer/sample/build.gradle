@@ -6,8 +6,9 @@ dependencies {
     implementation project(':naf_presentation_layer')
 
     implementation Android.Ktx.activityKtx
-    implementation Android.Ktx.navigationFragmentKtx
+    implementation Android.Ktx.fragmentKtx
     implementation NikolayMenzhulin.logger
+    implementation Cicerone.cicerone
     implementation Dagger.dagger
     kapt Dagger.daggerCompiler
 }

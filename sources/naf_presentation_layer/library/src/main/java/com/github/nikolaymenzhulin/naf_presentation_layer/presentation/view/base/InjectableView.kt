@@ -9,5 +9,5 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.di.injector.AbstractVi
  */
 interface InjectableView {
 
-    val injector: AbstractViewInjector<*, *>
+    val injector: AbstractViewInjector<*>
 }

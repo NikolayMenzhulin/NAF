@@ -21,13 +21,7 @@ class TestViewModelActivity : ViewModelActivity<TestViewModelActivityViewModel>(
         super.onCreate(savedInstanceState)
         initViews()
         initListeners()
-        onObserveViewModelData()
-    }
-
-    override fun onObserveViewModelData() {
-        vm.currentNumber.observe(this) { currentNumber ->
-            currentNumberTv.text = currentNumber
-        }
+        observeViewModel()
     }
 
     private fun initViews() {
@@ -37,5 +31,11 @@ class TestViewModelActivity : ViewModelActivity<TestViewModelActivityViewModel>(
 
     private fun initListeners() {
         increaseBtn.setOnClickListener { vm.increaseCurrentNumber() }
+    }
+
+    private fun observeViewModel() {
+        vm.currentNumber.observe(this) { currentNumber ->
+            currentNumberTv.text = currentNumber
+        }
     }
 }

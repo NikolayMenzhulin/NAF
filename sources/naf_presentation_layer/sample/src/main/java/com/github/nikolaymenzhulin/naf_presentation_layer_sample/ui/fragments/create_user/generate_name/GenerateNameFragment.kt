@@ -8,7 +8,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.cr
 /**
  * The screen that generates a name for the user being created.
  */
-class GenerateNameFragment : BaseGenerateUserFragment<GenerateNameFragmentViewModel, GenerateNameFragmentNavigator>() {
+class GenerateNameFragment : BaseGenerateUserFragment<GenerateNameFragmentViewModel>() {
 
     override val toolbarTitleResId: Int = R.string.generate_name_toolbar_title
 
@@ -21,12 +21,12 @@ class GenerateNameFragment : BaseGenerateUserFragment<GenerateNameFragmentViewMo
     override val injector = GenerateNameFragmentInjector(this)
 
     override fun initListeners() {
-        super.initListeners()
+        vb.toolbar.root.setNavigationOnClickListener { vm.exit() }
         vb.generateUserDataBtn.setOnClickListener { vm.generateUserName() }
-        vb.nextStepBtn.setOnClickListener { navigator.goToGenerateSurnameScreen() }
+        vb.nextStepBtn.setOnClickListener { vm.goToGenerateSurnameScreen() }
     }
 
-    override fun onObserveViewModelData() {
+    override fun onObserveViewModelCallback() {
         vm.userName.observe(this, ::setUserData)
     }
 }

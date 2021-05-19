@@ -67,19 +67,19 @@ widgets:
       visibility: false
 
   - stringParameter:
-      id: navigatorName
-      name: Navigator name
+      id: navDelegateName
+      name: Navigation delegate name
       help: ...
-      default: ${fragmentName}Navigator
-      suggest: ${fragmentName}Navigator
+      default: ${fragmentName}NavDelegate
+      suggest: ${fragmentName}NavDelegate
       visibility: false
 
   - stringParameter:
-      id: navigatorFactoryName
-      name: NavigatorFactory name
+      id: routeName
+      name: Route name
       help: ...
-      default: ${navigatorName}Factory
-      suggest: ${navigatorName}Factory
+      default: ${fragmentName}Route
+      suggest: ${fragmentName}Route
       visibility: false
 
   - stringParameter:
@@ -162,12 +162,23 @@ recipe:
       validIf: ${hasPackage}
       commands:
         - instantiate:
-            from: /root/src/Navigator.kt.ftl
-            to: ${srcOut}/${screenPackageName}/${navigatorName}.kt
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${navDelegateName}.kt
       elseCommands:
         - instantiate:
-            from: /root/src/Navigator.kt.ftl
-            to: ${srcOut}/${navigatorName}.kt
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${navDelegateName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${routeName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${routeName}.kt
 
   - predicate:
       validIf: ${hasPackage}
@@ -223,17 +234,6 @@ recipe:
         - instantiate:
             from: /root/src/di/module/Module.kt.ftl
             to: ${srcOut}/di/module/${moduleName}.kt
-
-  - predicate:
-      validIf: ${hasPackage}
-      commands:
-        - instantiate:
-            from: /root/src/di/module/navigator/NavigatorFactoryModule.kt.ftl
-            to: ${srcOut}/${screenPackageName}/di/module/navigator/NavigatorFactoryModule.kt
-      elseCommands:
-        - instantiate:
-            from: /root/src/di/module/navigator/NavigatorFactoryModule.kt.ftl
-            to: ${srcOut}/di/module/navigator/NavigatorFactoryModule.kt
 
   - predicate:
       validIf: ${hasPackage}

@@ -4,18 +4,25 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentat
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.TestInjectableFragment
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.injectable.di.holder.TestInjectableFragmentComponentHolder
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.DaggerComponent
-import com.github.nikolaymenzhulin.naf_presentation_layer.test.R
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class InjectableFragmentTest : BaseFragmentTest(R.navigation.graph_injectable_fragment_test) {
+class InjectableFragmentTest : BaseFragmentTest() {
 
     companion object {
 
         const val DEPENDENCY_STRING = "Test dependency."
+    }
+
+    @BeforeEach
+    fun setUp() {
+        activity.scenario.onActivity { activity ->
+            activity.openFragmentScreen(TestInjectableFragment())
+        }
     }
 
     @Test

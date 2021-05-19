@@ -1,9 +1,10 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.view_model
 
+import androidx.lifecycle.SavedStateHandle
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.ViewModelFragmentTest.Companion.CURRENT_NUMBER_INIT_VALUE
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.ViewModelFragmentTest.Companion.SAVE_TAG
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.AbstractViewModel
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.common_deps.CommonViewModelDeps
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.error_handler.ErrorHandler
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.factory.ViewModelAssistedFactory
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -13,8 +14,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class TestViewModelFragmentViewModel @AssistedInject constructor(
-    @Assisted commonDeps: CommonViewModelDeps
-) : AbstractViewModel(commonDeps) {
+    @Assisted override val savedStateHandle: SavedStateHandle,
+    override val errorHandler: ErrorHandler,
+    override val navDelegate: TestViewModelFragmentNavDelegate
+) : AbstractViewModel<TestViewModelFragmentNavDelegate>() {
 
     private val _currentNumber: MutableStateFlow<String> = MutableStateFlow(CURRENT_NUMBER_INIT_VALUE)
     val currentNumber: StateFlow<String> = _currentNumber.asStateFlow()

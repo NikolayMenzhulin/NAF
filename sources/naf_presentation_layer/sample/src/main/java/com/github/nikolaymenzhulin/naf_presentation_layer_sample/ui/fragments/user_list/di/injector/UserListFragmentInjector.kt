@@ -10,12 +10,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.us
  * Injector for [UserListFragment].
  */
 class UserListFragmentInjector(
-    view: UserListFragment,
-    module: UserListFragmentModule = UserListFragmentModule(view)
-) : AbstractViewInjector<UserListFragment, UserListFragmentModule>(view, module) {
+    private val view: UserListFragment
+) : AbstractViewInjector<UserListFragment>(view) {
 
-    override fun initComponent(module: UserListFragmentModule) {
-        UserListFragmentComponentHolder.initComponent(module)
+    override fun initComponent() {
+        UserListFragmentComponentHolder.initComponent(UserListFragmentModule(view))
     }
 
     override fun getViewComponent(): ViewComponent<UserListFragment> =

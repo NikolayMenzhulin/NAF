@@ -5,8 +5,10 @@ import androidx.annotation.LayoutRes
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.SavedStateViewModel
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.factory.ViewModelFactory
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -29,18 +31,22 @@ abstract class ViewModelFragment<VM : BaseViewModel>(
 
     protected abstract val vm: VM
 
-    /**
-     * Callback для подписки на данные из view model.
-     * Вызывается на этапе выполнения onActivityCreated, после вызова super.onActivityCreated.
-     */
-    protected abstract fun onObserveViewModelData()
+    private val coroutineJobs: MutableList<Job> = mutableListOf()
 
     final override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory =
         vmFactory.create(this, arguments)
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        vm.onSaveInstantState()
+        (vm as? SavedStateViewModel)?.onSaveInstantState()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        coroutineJobs.apply {
+            forEach(Job::cancel)
+            clear()
+        }
     }
 
     /**
@@ -48,10 +54,11 @@ abstract class ViewModelFragment<VM : BaseViewModel>(
      *
      * @param lifecycleOwner жизненный цикл view для привязки к нему состояния подписки
      * @param observer действия для выполнения при получении данных от [Flow]
+     *
+     * @return [Job] корутины, запущенной в результате создания подписки
      */
-    protected fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, observer: (T) -> Unit) {
+    protected fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, observer: (T) -> Unit): Job =
         lifecycleOwner.lifecycleScope.launchWhenStarted {
             onEach(observer::invoke).collect()
-        }
-    }
+        }.also(coroutineJobs::add)
 }

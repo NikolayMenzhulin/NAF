@@ -16,14 +16,14 @@ class ComponentHolderTest {
 
     @Test
     fun `Check initialization of a component inside a holder`() {
-        TestComponentHolder.initComponent(module = TestModule())
+        TestComponentHolder.initComponent(TestModule())
         assertNotNull(TestComponentHolder.component)
     }
 
     @Test
     fun `Check clearing of a component inside a holder`() {
         TestComponentHolder.apply {
-            initComponent(module = TestModule())
+            initComponent(TestModule())
             clearComponent()
         }
         assertThrows<IllegalStateException> { TestComponentHolder.component }

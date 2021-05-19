@@ -10,7 +10,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingCreateMethodType.BIND
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingCreateMethodType.INFLATE
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingHolder
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
  * Базовый fragment с поддержкой работы с view binding.
@@ -28,7 +28,7 @@ abstract class ViewBindingFragment<VM : BaseViewModel, VB : ViewBinding>(
 
     protected val vb: VB
         get() = vbHolder.vb
-            ?: throw IllegalStateException("ViewBinding instance available only when a view of a fragment is inflated and available")
+            ?: throw IllegalStateException("The view binding available only when a view of a fragment is inflated")
 
     private var vbHolder: ViewBindingHolder<VB> = ViewBindingHolder(vbClass)
 

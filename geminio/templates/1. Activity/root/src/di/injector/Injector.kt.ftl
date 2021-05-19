@@ -10,12 +10,11 @@ import ${packageName}<#if hasPackage>.${screenPackageName}</#if>.di.module.${mod
  * Injector for [${activityName}].
  */
 class ${injectorName}(
-    view: ${activityName},
-    module: ${moduleName} = ${moduleName}(view)
-) : AbstractViewInjector<${activityName}, ${moduleName}>(view, module) {
+    private val view: ${activityName}
+) : AbstractViewInjector<${activityName}>(view) {
 
-    override fun initComponent(module: ${moduleName}) {
-        ${componentHolderName}.initComponent(module)
+    override fun initComponent() {
+        ${componentHolderName}.initComponent(${moduleName}(view))
     }
 
     override fun getViewComponent(): ViewComponent<${activityName}> =

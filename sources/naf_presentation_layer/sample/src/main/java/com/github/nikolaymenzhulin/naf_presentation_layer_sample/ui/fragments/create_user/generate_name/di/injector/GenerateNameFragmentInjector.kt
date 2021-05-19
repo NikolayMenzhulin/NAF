@@ -10,12 +10,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.cr
  * Injector for [GenerateNameFragment].
  */
 class GenerateNameFragmentInjector(
-    view: GenerateNameFragment,
-    module: GenerateNameFragmentModule = GenerateNameFragmentModule(view)
-) : AbstractViewInjector<GenerateNameFragment, GenerateNameFragmentModule>(view, module) {
+    private val view: GenerateNameFragment
+) : AbstractViewInjector<GenerateNameFragment>(view) {
 
-    override fun initComponent(module: GenerateNameFragmentModule) {
-        GenerateNameFragmentComponentHolder.initComponent(module)
+    override fun initComponent() {
+        GenerateNameFragmentComponentHolder.initComponent(GenerateNameFragmentModule(view))
     }
 
     override fun getViewComponent(): ViewComponent<GenerateNameFragment> =

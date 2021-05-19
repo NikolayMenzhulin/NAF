@@ -1,75 +1,62 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.annotation.LayoutRes
-import androidx.navigation.fragment.NavHostFragment
 import androidx.viewbinding.ViewBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.NavigationFragment
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.AbstractNavigator
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.factory.NavigatorAssistedFactory
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.terrakok.cicerone.Navigator
+import com.github.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
 /**
- * Базовая activity с поддержкой работы с navigator.
+ * Базовая activity с поддержкой навигации.
  *
- * @param contentLayoutId layout id вёрстки для activity
- * @param vbClass класс view binding, связанный с activity
- *
- * @property navigatorFactory фабрика для создания navigator
- * @property navigator navigator, связанный с activity
+ * @property navigatorHolder контейнер, содержащий используемый navigator
+ * @property navigator навигатор, который использует activity
  */
-abstract class NavigationActivity<VM : BaseViewModel, VB : ViewBinding, N : AbstractNavigator<VM>>(
+abstract class NavigationActivity<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
 ) : ViewBindingActivity<VM, VB>(contentLayoutId, vbClass) {
 
     @Inject
-    lateinit var navigatorFactory: NavigatorAssistedFactory<N, VM>
+    lateinit var navigatorHolder: NavigatorHolder
 
     protected val navigator: N
-        get() = _navigator
-            ?: throw IllegalStateException("An error occurred while creating Navigator instance")
+        get() = _navigator ?: throw IllegalStateException("The navigator has not been initialized yet")
 
     private var _navigator: N? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initNavigator()
+        _navigator = createNavigator()
     }
 
-    override fun onBackPressed() {
-        onSetNavigationResultForFragments()
-        onSetNavigationResult()
-        super.onBackPressed()
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        _navigator = createNavigator()
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navigatorHolder.removeNavigator()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        destroyNavigator()
-    }
-
-    private fun initNavigator() {
-        _navigator = navigatorFactory.create(vm)
-    }
-
-    private fun onSetNavigationResultForFragments() {
-        supportFragmentManager.fragments.forEach { fragment ->
-            if (fragment is NavHostFragment) {
-                fragment.childFragmentManager.fragments.forEach { childFragment ->
-                    if (childFragment is NavigationFragment<*, *, *>) {
-                        childFragment.onSetNavigationResult()
-                    }
-                }
-            }
-        }
-    }
-
-    private fun onSetNavigationResult() {
-        _navigator?.onSetNavigationResult()
-    }
-
-    private fun destroyNavigator() {
         _navigator = null
     }
+
+    /**
+     * Создать навигатор, который будет использовать activity.
+     *
+     * @return навигатор для activity
+     */
+    protected abstract fun createNavigator(): N
 }

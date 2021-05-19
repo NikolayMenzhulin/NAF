@@ -1,7 +1,8 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.generate_name
 
+import androidx.lifecycle.SavedStateHandle
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.AbstractViewModel
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.common_deps.CommonViewModelDeps
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.error_handler.ErrorHandler
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.factory.ViewModelAssistedFactory
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.domain.UserDM
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.utils.UserGenerator
@@ -16,11 +17,13 @@ import kotlinx.coroutines.flow.asStateFlow
  * ViewModel for [GenerateNameFragment].
  */
 class GenerateNameFragmentViewModel @AssistedInject constructor(
-    @Assisted commonDeps: CommonViewModelDeps,
+    @Assisted override val savedStateHandle: SavedStateHandle,
+    override val errorHandler: ErrorHandler,
+    override val navDelegate: GenerateNameFragmentNavDelegate,
     private val userGenerator: UserGenerator
-) : AbstractViewModel(commonDeps) {
+) : AbstractViewModel<GenerateNameFragmentNavDelegate>() {
 
-    val userBuilder: UserDM.Builder = UserDM.Builder()
+    private val userBuilder: UserDM.Builder = UserDM.Builder()
 
     private val _userName: MutableStateFlow<String> = MutableStateFlow("")
     val userName: StateFlow<String> = _userName.asStateFlow()
@@ -29,6 +32,14 @@ class GenerateNameFragmentViewModel @AssistedInject constructor(
         val userName: String = userGenerator.generateName()
         userBuilder.name = userName
         _userName.tryEmit(userName)
+    }
+
+    fun goToGenerateSurnameScreen() {
+        navDelegate.goToGenerateSurnameScreen(userBuilder)
+    }
+
+    fun exit() {
+        navDelegate.exit()
     }
 }
 

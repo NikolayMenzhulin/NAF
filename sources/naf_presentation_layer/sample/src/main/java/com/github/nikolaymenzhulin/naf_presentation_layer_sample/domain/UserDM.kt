@@ -6,7 +6,7 @@ class UserDM private constructor(
     val name: String,
     val surname: String,
     val age: Int
-) : Serializable {
+) {
 
     override fun toString(): String = "$name $surname, $age years old"
 

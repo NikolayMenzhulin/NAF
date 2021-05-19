@@ -10,12 +10,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.activity.di.
  * Injector for [MainActivity].
  */
 class MainActivityInjector(
-    view: MainActivity,
-    module: MainActivityModule = MainActivityModule(view)
-) : AbstractViewInjector<MainActivity, MainActivityModule>(view, module) {
+    private val view: MainActivity
+) : AbstractViewInjector<MainActivity>(view) {
 
-    override fun initComponent(module: MainActivityModule) {
-        MainActivityComponentHolder.initComponent(module)
+    override fun initComponent() {
+        MainActivityComponentHolder.initComponent(MainActivityModule(view))
     }
 
     override fun getViewComponent(): ViewComponent<MainActivity> =

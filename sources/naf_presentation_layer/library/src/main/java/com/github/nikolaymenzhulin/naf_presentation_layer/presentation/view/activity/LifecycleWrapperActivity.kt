@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.AbstractNavigator
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.terrakok.cicerone.Navigator
 
 /**
  * Базовая activity, оборачивающая основные методы жизненного цикла.
@@ -13,7 +13,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
  * @param contentLayoutId layout id вёрстки для activity
  * @param vbClass класс view binding, связанный с activity
  */
-abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N : AbstractNavigator<VM>>(
+abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
 ) : NavigationActivity<VM, VB, N>(contentLayoutId, vbClass) {
@@ -21,13 +21,13 @@ abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onCreateCallback(savedInstanceState)
-        onObserveViewModelData()
+        onObserveViewModelCallback()
     }
 
     final override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         onCreateCallback(savedInstanceState, persistentState)
-        onObserveViewModelData()
+        onObserveViewModelCallback()
     }
 
     final override fun onStart() {
@@ -48,6 +48,11 @@ abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N 
     final override fun onResume() {
         super.onResume()
         onResumeCallback()
+    }
+
+    final override fun onResumeFragments() {
+        super.onResumeFragments()
+        onResumeFragmentsCallback()
     }
 
     final override fun onPause() {
@@ -99,6 +104,10 @@ abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N 
         // Empty realization.
     }
 
+    protected open fun onResumeFragmentsCallback() {
+        // Empty realization.
+    }
+
     protected open fun onPauseCallback() {
         // Empty realization.
     }
@@ -118,4 +127,10 @@ abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N 
     protected open fun onDestroyCallback() {
         // Empty realization.
     }
+
+    /**
+     * Callback для подписки на данные из view model.
+     * Вызывается на этапе выполнения onCreate, после вызовов super.onCreate и onCreateCallback.
+     */
+    protected abstract fun onObserveViewModelCallback()
 }

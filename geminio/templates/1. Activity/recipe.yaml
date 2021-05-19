@@ -50,6 +50,12 @@ widgets:
       default: path.to.di.package
       visibility: ${hasParentComponent}
 
+  - booleanParameter:
+      id: isFragmentsContainer
+      name: Create as a container for fragments
+      help: Select this if the activity to be created will be used as a container for fragments
+      default: false
+
   - stringParameter:
       id: activityName
       name: Activity name
@@ -67,19 +73,19 @@ widgets:
       visibility: false
 
   - stringParameter:
-      id: navigatorName
-      name: Navigator name
+      id: navDelegateName
+      name: Navigation delegate name
       help: ...
-      default: ${activityName}Navigator
-      suggest: ${activityName}Navigator
+      default: ${activityName}NavDelegate
+      suggest: ${activityName}NavDelegate
       visibility: false
 
   - stringParameter:
-      id: navigatorFactoryName
-      name: NavigatorFactory name
+      id: routeName
+      name: Route name
       help: ...
-      default: ${navigatorName}Factory
-      suggest: ${navigatorName}Factory
+      default: ${activityName}Route
+      suggest: ${activityName}Route
       visibility: false
 
   - stringParameter:
@@ -146,14 +152,6 @@ widgets:
       suggest: activity_${screenName.classToResource()}
       visibility: false
 
-  - stringParameter:
-      id: navGraphName
-      name: Navigation graph name
-      help: ...
-      default: graph_${screenName.classToResource()}
-      suggest: graph_${screenName.classToResource()}
-      visibility: false
-
 recipe:
   - predicate:
       validIf: ${hasPackage}
@@ -170,12 +168,23 @@ recipe:
       validIf: ${hasPackage}
       commands:
         - instantiate:
-            from: /root/src/Navigator.kt.ftl
-            to: ${srcOut}/${screenPackageName}/${navigatorName}.kt
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${navDelegateName}.kt
       elseCommands:
         - instantiate:
-            from: /root/src/Navigator.kt.ftl
-            to: ${srcOut}/${navigatorName}.kt
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${navDelegateName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${routeName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${routeName}.kt
 
   - predicate:
       validIf: ${hasPackage}
@@ -236,17 +245,6 @@ recipe:
       validIf: ${hasPackage}
       commands:
         - instantiate:
-            from: /root/src/di/module/navigator/NavigatorFactoryModule.kt.ftl
-            to: ${srcOut}/${screenPackageName}/di/module/navigator/NavigatorFactoryModule.kt
-      elseCommands:
-        - instantiate:
-            from: /root/src/di/module/navigator/NavigatorFactoryModule.kt.ftl
-            to: ${srcOut}/di/module/navigator/NavigatorFactoryModule.kt
-
-  - predicate:
-      validIf: ${hasPackage}
-      commands:
-        - instantiate:
             from: /root/src/di/module/view_model/ViewModelFactoryModule.kt.ftl
             to: ${srcOut}/${screenPackageName}/di/module/view_model/ViewModelFactoryModule.kt
       elseCommands:
@@ -265,10 +263,13 @@ recipe:
             from: /root/src/di/injector/Injector.kt.ftl
             to: ${srcOut}/di/injector/${injectorName}.kt
 
-  - instantiate:
-      from: /root/res/layout/activity_layout.xml.ftl
-      to: ${resOut}/layout/${layoutName}.xml
-
-  - instantiate:
-      from: /root/res/navigation/nav_graph.xml.ftl
-      to: ${resOut}/navigation/${navGraphName}.xml
+  - predicate:
+      validIf: ${isFragmentsContainer}
+      commands:
+        - instantiate:
+            from: /root/res/layout/activity_fragment_container_layout.xml.ftl
+            to: ${resOut}/layout/${layoutName}.xml
+      elseCommands:
+        - instantiate:
+            from: /root/res/layout/activity_layout.xml.ftl
+            to: ${resOut}/layout/${layoutName}.xml

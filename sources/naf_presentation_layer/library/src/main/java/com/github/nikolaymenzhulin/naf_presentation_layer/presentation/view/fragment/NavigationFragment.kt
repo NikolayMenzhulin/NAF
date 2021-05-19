@@ -1,56 +1,57 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment
 
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.AbstractNavigator
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.factory.NavigatorAssistedFactory
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.base.BaseViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
+import com.github.terrakok.cicerone.Navigator
+import com.github.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
 /**
- * Базовый fragment с поддержкой работы с navigator.
+ * Базовый fragment с поддержкой навигации.
  *
- * @param contentLayoutId layout id вёрстки для fragment
- * @param vbClass класс view binding, связанный с fragment
- *
- * @property navigatorFactory фабрика для создания navigator
- * @property navigator navigator, связанный с fragment
+ * @property navigatorHolder контейнер, содержащий используемый navigator
+ * @property navigator навигатор, который использует fragment
  */
-abstract class NavigationFragment<VM : BaseViewModel, VB : ViewBinding, N : AbstractNavigator<VM>>(
+abstract class NavigationFragment<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
 ) : ViewBindingFragment<VM, VB>(contentLayoutId, vbClass) {
 
     @Inject
-    lateinit var navigatorFactory: NavigatorAssistedFactory<N, VM>
+    lateinit var navigatorHolder: NavigatorHolder
 
     protected val navigator: N
-        get() = _navigator
-            ?: throw IllegalStateException("Navigator instance available only when a view of a fragment is inflated and available")
+        get() = _navigator ?: throw IllegalStateException("The navigator has not been initialized yet")
 
     private var _navigator: N? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initNavigator()
+    @Suppress("DEPRECATION")
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        _navigator = createNavigator()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        destroyNavigator()
+    override fun onResume() {
+        super.onResume()
+        navigatorHolder.setNavigator(navigator)
     }
 
-    fun onSetNavigationResult() {
-        _navigator?.onSetNavigationResult()
+    override fun onPause() {
+        super.onPause()
+        navigatorHolder.removeNavigator()
     }
 
-    private fun initNavigator() {
-        _navigator = navigatorFactory.create(vm)
-    }
-
-    private fun destroyNavigator() {
+    override fun onDestroy() {
+        super.onDestroy()
         _navigator = null
     }
+
+    /**
+     * Создать навигатор, который будет использовать fragment.
+     *
+     * @return навигатор для fragment
+     */
+    protected abstract fun createNavigator(): N
 }

@@ -7,15 +7,24 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.base.BaseFragmentTest
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.view_model.TestViewModelFragmentRoute
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-class ViewModelFragmentTest : BaseFragmentTest(R.navigation.graph_view_model_fragment_test) {
+class ViewModelFragmentTest : BaseFragmentTest() {
 
     companion object {
 
         const val CURRENT_NUMBER_INIT_VALUE = "1"
         const val SAVE_TAG = " (restored)"
+    }
+
+    @BeforeEach
+    fun setUp() {
+        activity.scenario.onActivity { activity ->
+            activity.openFragmentScreen(TestViewModelFragmentRoute())
+        }
     }
 
     @Test

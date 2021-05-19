@@ -22,8 +22,4 @@ abstract class TestViewBindingFragment(
         vb.currentNumberTv.root.text = CURRENT_NUMBER_INIT_VALUE
         vb.viewBindingHashTv.text = vb.hashCode().toString()
     }
-
-    override fun onObserveViewModelData() {
-        // Do nothing.
-    }
 }

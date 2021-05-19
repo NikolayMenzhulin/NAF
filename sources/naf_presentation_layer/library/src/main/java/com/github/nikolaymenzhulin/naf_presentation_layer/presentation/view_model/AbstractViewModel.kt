@@ -1,10 +1,8 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model
 
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.common_deps.CommonViewModelDeps
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.navigation_delegate.AbstractNavDelegate
 
 /**
- * Базовый класс для реализации view model с поддержкой сохранения состояния и обработки ошибок.
- *
- * @param commonDeps основные зависимости, которые необходимы view model
+ * Базовый класс для реализации view model с поддержкой сохранения состояния, работы с корутинами и навигации.
  */
-abstract class AbstractViewModel(commonDeps: CommonViewModelDeps) : ErrorHandlingViewModel(commonDeps)
+abstract class AbstractViewModel<ND : AbstractNavDelegate<*, *>> : NavigationViewModel<ND>()
