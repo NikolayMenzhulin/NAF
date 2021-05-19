@@ -42,13 +42,13 @@ abstract class LifecycleWrapperFragment<VM : BaseViewModel, VB : ViewBinding, N 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onViewCreatedCallback(view, savedInstanceState)
+        onObserveViewModelData()
     }
 
     @Suppress("DEPRECATION")
     final override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         onActivityCreatedCallback(savedInstanceState)
-        onObserveViewModelData()
     }
 
     final override fun onViewStateRestored(savedInstanceState: Bundle?) {

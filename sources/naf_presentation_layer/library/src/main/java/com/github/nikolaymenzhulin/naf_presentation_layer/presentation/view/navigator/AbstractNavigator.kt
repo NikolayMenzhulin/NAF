@@ -1,6 +1,7 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.lifecycle.*
 import androidx.navigation.NavController
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigator.common_deps.CommonNavigatorDeps
@@ -55,11 +56,17 @@ abstract class AbstractNavigator<VM : BaseViewModel>(commonDeps: CommonNavigator
      * @param result данные, являющиеся результатом работы экрана
      */
     protected fun <T : Serializable> setNavigationResult(key: String, result: T): Unit? =
-        navController.previousBackStackEntry?.savedStateHandle?.run {
-            if (!contains(key) || get<T>(key) != result) {
-                set(key, result)
-            }
-        }
+        navController.previousBackStackEntry?.savedStateHandle?.setIfNotExist(key, result)
+
+    /**
+     * Установить результат работы экрана.
+     *
+     * @param destinationId id экрана, которому будет перед результат
+     * @param key ключ, идентифицирующий результат
+     * @param result данные, являющиеся результатом работы экрана
+     */
+    protected fun <T : Serializable> setNavigationResult(@IdRes destinationId: Int, key: String, result: T): Unit =
+        navController.getBackStackEntry(destinationId).savedStateHandle.setIfNotExist(key, result)
 
     /**
      * Получить результат работы экрана.
@@ -94,5 +101,11 @@ abstract class AbstractNavigator<VM : BaseViewModel>(commonDeps: CommonNavigator
             }
         })
         return resultFlow
+    }
+
+    private fun <T : Serializable> SavedStateHandle.setIfNotExist(key: String, result: T) {
+        if (!contains(key) || get<T>(key) != result) {
+            set(key, result)
+        }
     }
 }
