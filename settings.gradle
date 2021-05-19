@@ -2,7 +2,7 @@ rootProject.name = "Nikolay's Android Framework"
 
 def modulesNames = [
         ["naf_service_layer", "naf_service_layer_sample"],
-        ["naf_presentation_layer", null]
+        ["naf_presentation_layer", "naf_presentation_layer_sample"]
 ]
 
 modulesNames.collectEntries().each {

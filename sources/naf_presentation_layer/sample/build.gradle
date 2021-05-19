@@ -1,0 +1,13 @@
+import static com.github.nikolaymenzhulin.build_src.Deps.*
+
+apply from: project.android_sample_module
+
+dependencies {
+    implementation project(':naf_presentation_layer')
+
+    implementation Android.Ktx.activityKtx
+    implementation Android.Ktx.navigationFragmentKtx
+    implementation NikolayMenzhulin.logger
+    implementation Dagger.dagger
+    kapt Dagger.daggerCompiler
+}

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">NAF Presentation Layer Sample</string>
+
+    <!-- UserListFragment -->
+    <string name="user_list_toolbar_title">Users</string>
+    <string name="user_list_create_user_menu_title">Create user</string>
+    <string name="user_list_empty_list_text">No users…</string>
+
+    <!-- GenerateNameFragment -->
+    <string name="generate_name_toolbar_title">Generate name</string>
+    <string name="generate_name_name_placeholder_text">Generate name</string>
+    <string name="generate_name_next_btn_text">Next step</string>
+
+    <!-- GenerateSurnameFragment -->
+    <string name="generate_surname_toolbar_title">Generate surname</string>
+    <string name="generate_surname_surname_placeholder_text">Generate surname</string>
+    <string name="generate_surname_next_btn_text">Next step</string>
+
+    <!-- GenerateAgeFragment -->
+    <string name="generate_age_toolbar_title">Generate age</string>
+    <string name="generate_age_age_placeholder_text">Generate age</string>
+    <string name="generate_age_next_btn_text">Create user</string>
+
+</resources>

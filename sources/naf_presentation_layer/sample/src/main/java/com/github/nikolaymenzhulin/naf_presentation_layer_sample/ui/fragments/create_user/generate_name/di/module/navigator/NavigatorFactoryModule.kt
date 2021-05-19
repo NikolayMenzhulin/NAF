@@ -1,0 +1,15 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.generate_name.di.module.navigator
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.binds.BaseNavigatorFactoryModule
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.generate_name.GenerateNameFragmentNavigator
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.generate_name.GenerateNameFragmentNavigatorFactory
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.generate_name.GenerateNameFragmentViewModel
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.generate_name.di.module.GenerateNameFragmentModule
+import dagger.Module
+
+/**
+ * Submodule of [GenerateNameFragmentModule].
+ */
+@Module
+interface NavigatorFactoryModule :
+    BaseNavigatorFactoryModule<GenerateNameFragmentNavigatorFactory, GenerateNameFragmentNavigator, GenerateNameFragmentViewModel>
