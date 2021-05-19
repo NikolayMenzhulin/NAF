@@ -2,7 +2,7 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presenta
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity.di.component.TestFragmentHostActivityComponent
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity.di.module.TestFragmentHostActivityModule
-import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.holder.AbstractComponentHolder
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.holder.AbstractComponentHolder
 
 object TestFragmentHostActivityComponentHolder :
     AbstractComponentHolder<TestFragmentHostActivityComponent, TestFragmentHostActivityModule>() {

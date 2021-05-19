@@ -1,4 +1,4 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.di.component.holder
+package com.github.nikolaymenzhulin.naf_presentation_layer.di.holder
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.DaggerComponent
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.base.DaggerModule

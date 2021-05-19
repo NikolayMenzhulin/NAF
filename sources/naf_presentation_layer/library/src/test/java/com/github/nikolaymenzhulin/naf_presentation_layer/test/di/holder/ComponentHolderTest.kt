@@ -1,7 +1,7 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder
+package com.github.nikolaymenzhulin.naf_presentation_layer.test.di.holder
 
-import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.holder.TestComponentHolder
-import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.module.TestModule
+import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.holder.test_data.holder.TestComponentHolder
+import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.holder.test_data.module.TestModule
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test

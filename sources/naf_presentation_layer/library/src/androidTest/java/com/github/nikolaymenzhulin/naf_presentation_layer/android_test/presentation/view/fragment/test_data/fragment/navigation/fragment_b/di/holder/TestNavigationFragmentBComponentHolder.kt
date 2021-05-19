@@ -2,7 +2,7 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presenta
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_b.di.component.TestNavigationFragmentBComponent
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.navigation.fragment_b.di.module.TestNavigationFragmentBModule
-import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.holder.AbstractComponentHolder
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.holder.AbstractComponentHolder
 
 object TestNavigationFragmentBComponentHolder :
     AbstractComponentHolder<TestNavigationFragmentBComponent, TestNavigationFragmentBModule>() {

@@ -1,8 +1,8 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.component
+package com.github.nikolaymenzhulin.naf_presentation_layer.test.di.holder.test_data.component
 
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.DaggerComponent
-import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.component.deps_provider.TestDepsProvider
-import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.component.holder.test_data.module.TestModule
+import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.holder.test_data.component.deps_provider.TestDepsProvider
+import com.github.nikolaymenzhulin.naf_presentation_layer.test.di.holder.test_data.module.TestModule
 import dagger.Component
 
 @Component(modules = [TestModule::class])

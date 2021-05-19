@@ -1,6 +1,6 @@
 package ${packageName}.di.holder
 
-import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.holder.AbstractComponentHolder
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.holder.AbstractComponentHolder
 import ${packageName}.di.component.${componentName}
 import ${packageName}.di.module.${moduleName}
 
