@@ -1,4 +1,4 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.utils
 
 /**
  * Возможные типы создания view binding для view.

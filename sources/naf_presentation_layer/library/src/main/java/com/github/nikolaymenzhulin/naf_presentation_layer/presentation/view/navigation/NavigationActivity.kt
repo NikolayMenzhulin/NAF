@@ -1,23 +1,25 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingActivity
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
 /**
- * Базовый fragment с поддержкой навигации.
+ * Базовая activity с поддержкой навигации.
  *
  * @property navigatorHolder контейнер, содержащий используемый navigator
- * @property navigator навигатор, который использует fragment
+ * @property navigator навигатор, который использует activity
  */
-abstract class NavigationFragment<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
+abstract class NavigationActivity<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
-) : ViewBindingFragment<VM, VB>(contentLayoutId, vbClass) {
+) : ViewBindingActivity<VM, VB>(contentLayoutId, vbClass) {
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
@@ -27,14 +29,18 @@ abstract class NavigationFragment<VM : BaseViewModel, VB : ViewBinding, N : Navi
 
     private var _navigator: N? = null
 
-    @Suppress("DEPRECATION")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         _navigator = createNavigator()
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        _navigator = createNavigator()
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
         navigatorHolder.setNavigator(navigator)
     }
 
@@ -49,9 +55,9 @@ abstract class NavigationFragment<VM : BaseViewModel, VB : ViewBinding, N : Navi
     }
 
     /**
-     * Создать навигатор, который будет использовать fragment.
+     * Создать навигатор, который будет использовать activity.
      *
-     * @return навигатор для fragment
+     * @return навигатор для activity
      */
     protected abstract fun createNavigator(): N
 }

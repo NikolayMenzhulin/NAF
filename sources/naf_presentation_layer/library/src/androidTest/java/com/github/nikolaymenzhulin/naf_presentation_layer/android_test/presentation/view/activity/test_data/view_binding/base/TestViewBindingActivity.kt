@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.ViewBindingActivityTest.Companion.CURRENT_NUMBER_INIT_VALUE
 import com.github.nikolaymenzhulin.naf_presentation_layer.databinding.ActivityViewBindingTestBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.ViewBindingActivity
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingActivity
 
 abstract class TestViewBindingActivity(
     @LayoutRes contentLayoutId: Int = 0

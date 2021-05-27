@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.view_model.di.injector.TestViewModelActivityInjector
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.ViewModelActivity
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.ViewModelActivity
 
 class TestViewModelActivity : ViewModelActivity<TestViewModelActivityViewModel>(R.layout.activity_view_model_test) {
 

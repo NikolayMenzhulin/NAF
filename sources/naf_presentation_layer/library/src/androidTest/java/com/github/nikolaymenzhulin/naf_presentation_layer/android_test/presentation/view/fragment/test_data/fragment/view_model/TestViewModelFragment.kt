@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.view_model.di.injector.TestViewModelFragmentInjector
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.ViewModelFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.ViewModelFragment
 
 class TestViewModelFragment : ViewModelFragment<TestViewModelFragmentViewModel>(R.layout.fragment_view_model_test) {
 

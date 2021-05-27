@@ -1,4 +1,4 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.injectable
 
 import android.content.Context
 import androidx.annotation.CallSuper

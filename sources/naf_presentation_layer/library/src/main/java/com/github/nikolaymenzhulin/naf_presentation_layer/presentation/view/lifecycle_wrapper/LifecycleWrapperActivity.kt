@@ -1,9 +1,10 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.lifecycle_wrapper
 
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.NavigationActivity
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 import com.github.terrakok.cicerone.Navigator
 

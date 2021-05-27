@@ -1,4 +1,4 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingCreateMethodType
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingCreateMethodType.BIND
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingCreateMethodType.INFLATE
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingHolder
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.utils.ViewBindingCreateMethodType
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.utils.ViewBindingCreateMethodType.BIND
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.utils.ViewBindingCreateMethodType.INFLATE
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.utils.ViewBindingHolder
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.ViewModelFragment
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**

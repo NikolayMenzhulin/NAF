@@ -6,7 +6,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.ViewBindingFragmentTest.Companion.CURRENT_NUMBER_INIT_VALUE
 import com.github.nikolaymenzhulin.naf_presentation_layer.databinding.FragmentViewBindingTestBinding
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.ViewBindingFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.ViewBindingFragment
 
 abstract class TestViewBindingFragment(
     @LayoutRes contentLayoutId: Int = 0

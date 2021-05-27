@@ -3,7 +3,7 @@ package com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.u
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.AbstractFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts.AbstractFragment
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.R
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.databinding.FragmentUserListBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.di.holder.CreateUserComponentHolder

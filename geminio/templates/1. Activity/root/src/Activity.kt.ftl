@@ -1,7 +1,7 @@
 package ${packageName}<#if (hasPackage)>.${screenPackageName}</#if>
 
 import androidx.activity.viewModels
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.AbstractActivity
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts.AbstractActivity
 <#if (!isFragmentsContainer)>
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.navigator.ActivityNavigator
 </#if>

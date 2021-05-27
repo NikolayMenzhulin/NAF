@@ -1,4 +1,4 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.injectable
 
 import android.os.Bundle
 import android.os.PersistableBundle

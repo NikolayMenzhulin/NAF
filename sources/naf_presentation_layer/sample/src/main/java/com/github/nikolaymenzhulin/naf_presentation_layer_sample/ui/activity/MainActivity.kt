@@ -1,7 +1,7 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.activity
 
 import androidx.activity.viewModels
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.AbstractActivity
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts.AbstractActivity
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.R
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.databinding.ActivityMainBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.activity.di.injector.MainActivityInjector

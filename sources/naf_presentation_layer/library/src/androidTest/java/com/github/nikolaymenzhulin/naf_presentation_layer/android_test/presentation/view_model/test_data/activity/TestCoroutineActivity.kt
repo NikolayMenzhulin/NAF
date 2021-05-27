@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.R
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view_model.test_data.activity.di.injector.TestCoroutineActivityInjector
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.activity.ViewModelActivity
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.ViewModelActivity
 
 class TestCoroutineActivity : ViewModelActivity<TestCoroutineActivityViewModel>(R.layout.activity_coroutine_test) {
 

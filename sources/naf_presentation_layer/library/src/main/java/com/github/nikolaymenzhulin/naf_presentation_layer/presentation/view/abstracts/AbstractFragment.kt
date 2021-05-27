@@ -1,7 +1,8 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts
 
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.lifecycle_wrapper.LifecycleWrapperFragment
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 import com.github.terrakok.cicerone.Navigator
 

@@ -1,7 +1,7 @@
 package ${packageName}<#if hasPackage>.${screenPackageName}</#if>
 
 import androidx.fragment.app.viewModels
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.fragment.AbstractFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts.AbstractFragment
 <#if (applicationPackage??)>
 import ${applicationPackage}.R
 </#if>
