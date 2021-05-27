@@ -1,6 +1,7 @@
 package com.github.nikolaymenzhulin.build_src
 
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Companion.appCompatV
+import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Companion.materialV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Companion.multidexV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.activityKtxV
 import com.github.nikolaymenzhulin.build_src.DepsVersions.Android.Ktx.coreKtxV
@@ -46,6 +47,7 @@ sealed class Deps {
 
             const val appCompat = "androidx.appcompat:appcompat:$appCompatV"
             const val multidex = "androidx.multidex:multidex:$multidexV"
+            const val material = "com.google.android.material:material:$materialV"
         }
 
         object Ktx : Android() {

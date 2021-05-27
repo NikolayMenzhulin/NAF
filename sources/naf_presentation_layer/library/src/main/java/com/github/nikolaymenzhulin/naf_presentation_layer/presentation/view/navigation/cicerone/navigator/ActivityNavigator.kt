@@ -1,11 +1,14 @@
-package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.navigator
+package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.cicerone.navigator
 
-import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import com.github.nikolaymenzhulin.logger.Logger
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.cicerone.screen.DialogScreen
 import com.github.terrakok.cicerone.*
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 
@@ -14,7 +17,7 @@ import com.github.terrakok.cicerone.androidx.ActivityScreen
  *
  * @param activity activity, с которой связан навигатор
  */
-open class ActivityNavigator(protected val activity: Activity) : Navigator {
+open class ActivityNavigator(protected val activity: FragmentActivity) : Navigator {
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
@@ -47,24 +50,35 @@ open class ActivityNavigator(protected val activity: Activity) : Navigator {
     ): Unit = throw error
 
     protected open fun forward(command: Forward) {
-        applyCommandIfActivityScreen(command) { screen ->
-            checkAndStartActivity(screen)
+        when (val screen = command.screen) {
+            is ActivityScreen -> checkAndStartActivity(screen)
+            is DialogScreen -> openDialog(screen)
         }
     }
 
     protected open fun replace(command: Replace) {
-        applyCommandIfActivityScreen(command) { screen ->
-            checkAndStartActivity(screen)
-            activity.finish()
+        when (val screen = command.screen) {
+            is ActivityScreen -> {
+                checkAndStartActivity(screen)
+                activity.finish()
+            }
+            is DialogScreen -> {
+                throwNotImplementedCommand(command)
+            }
         }
     }
 
     protected open fun backTo(command: BackTo) {
-        throw NotImplementedError("Command ${command::class.simpleName} not supported for an activity")
+        throwNotImplementedCommand(command)
     }
 
     protected open fun back() {
-        activity.finish()
+        val fragment: Fragment? = activity.supportFragmentManager.fragments.lastOrNull()
+        if (fragment != null && fragment is DialogFragment) {
+            fragment.dismiss()
+        } else {
+            activity.finish()
+        }
     }
 
     protected open fun onNotFoundActivityException(
@@ -74,23 +88,6 @@ open class ActivityNavigator(protected val activity: Activity) : Navigator {
         // Empty realization.
     }
 
-    private fun applyCommandIfActivityScreen(
-        command: Command,
-        action: (ActivityScreen) -> Unit
-    ) {
-        val screen: Screen =
-            when (command) {
-                is Forward -> command.screen
-                is Replace -> command.screen
-                else -> return
-            }
-        if (screen is ActivityScreen) {
-            action.invoke(screen)
-        } else {
-            Logger.e("An attempt to apply command ${command::class.simpleName} to not activity screen $screen")
-        }
-    }
-
     private fun checkAndStartActivity(screen: ActivityScreen) {
         val activityIntent: Intent = screen.createIntent(activity)
         try {
@@ -98,5 +95,15 @@ open class ActivityNavigator(protected val activity: Activity) : Navigator {
         } catch (e: ActivityNotFoundException) {
             onNotFoundActivityException(screen, activityIntent)
         }
+    }
+
+    private fun openDialog(screen: DialogScreen) {
+        val fragmentManager: FragmentManager = activity.supportFragmentManager
+        val dialogFragment: DialogFragment = screen.createDialog(fragmentManager.fragmentFactory)
+        dialogFragment.show(fragmentManager, screen.screenKey)
+    }
+
+    private fun throwNotImplementedCommand(command: Command) {
+        throw NotImplementedError("Command ${command::class.simpleName} not supported for an activity/dialog")
     }
 }

@@ -6,11 +6,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.R
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity.di.injector.TestFragmentHostActivityInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.databinding.ActivityFragmentHostTestBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts.AbstractActivity
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.cicerone.navigator.ScreenNavigator
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.route.AbstractFragmentRoute
-import com.github.terrakok.cicerone.androidx.AppNavigator
 
 class TestFragmentHostActivity :
-    AbstractActivity<TestFragmentHostActivityViewModel, ActivityFragmentHostTestBinding, AppNavigator>(
+    AbstractActivity<TestFragmentHostActivityViewModel, ActivityFragmentHostTestBinding, ScreenNavigator>(
         ActivityFragmentHostTestBinding::class.java
     ) {
 
@@ -18,7 +18,7 @@ class TestFragmentHostActivity :
 
     override val injector = TestFragmentHostActivityInjector(this)
 
-    override fun createNavigator() = AppNavigator(this, R.id.fragment_container)
+    override fun createNavigator() = ScreenNavigator(this, R.id.fragment_container)
 
     override fun onObserveViewModelCallback() {
         // Do nothing.

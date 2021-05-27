@@ -21,6 +21,7 @@ sealed class DepsVersions {
 
             const val appCompatV = "1.2.0"
             const val multidexV = "2.0.1"
+            const val materialV = "1.3.0"
         }
 
         object Ktx : Android() {

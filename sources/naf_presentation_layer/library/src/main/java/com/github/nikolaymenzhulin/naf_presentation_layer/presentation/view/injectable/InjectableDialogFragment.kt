@@ -2,7 +2,7 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.inj
 
 import android.content.Context
 import androidx.annotation.CallSuper
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.lifecycle.Lifecycle.Event.ON_CREATE
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -10,9 +10,9 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.injectable.fragment_delegate.InjectableFragmentDelegate
 
 /**
- * Базовый fragment с поддержкой инъекции зависимостей.
+ * Базовый dialog fragment с поддержкой инъекции зависимостей.
  */
-abstract class InjectableFragment : Fragment(), InjectableView, LifecycleObserver {
+abstract class InjectableDialogFragment : AppCompatDialogFragment(), InjectableView, LifecycleObserver {
 
     private val delegate by lazy { InjectableFragmentDelegate(this) }
 
@@ -27,7 +27,7 @@ abstract class InjectableFragment : Fragment(), InjectableView, LifecycleObserve
     }
 
     /**
-     * Callback, который будет вызван сразу после вызова onCreate у activity, с которой связан fragment.
+     * Callback, который будет вызван сразу после вызова onCreate у activity, с которой связан dialog fragment.
      */
     @CallSuper
     @OnLifecycleEvent(ON_CREATE)

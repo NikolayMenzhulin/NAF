@@ -10,6 +10,7 @@ android {
 
 dependencies {
     implementation Android.appCompat
+    implementation Android.material
     implementation Android.Ktx.coreKtx
     implementation Android.Ktx.lifecycleRuntimeKtx
     implementation Android.Ktx.activityKtx

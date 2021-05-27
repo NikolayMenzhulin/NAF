@@ -5,12 +5,12 @@ import android.view.View
 import androidx.annotation.CallSuper
 import androidx.core.content.ContextCompat
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts.AbstractFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.cicerone.navigator.ScreenNavigator
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.R
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.databinding.FragmentGenerateUserBinding
-import com.github.terrakok.cicerone.androidx.AppNavigator
 
-abstract class BaseGenerateUserFragment<VM : BaseViewModel> : AbstractFragment<VM, FragmentGenerateUserBinding, AppNavigator>(
+abstract class BaseGenerateUserFragment<VM : BaseViewModel> : AbstractFragment<VM, FragmentGenerateUserBinding, ScreenNavigator>(
     FragmentGenerateUserBinding::class.java
 ) {
 
@@ -18,7 +18,7 @@ abstract class BaseGenerateUserFragment<VM : BaseViewModel> : AbstractFragment<V
     protected abstract val userDataTvTextResId: Int
     protected abstract val nextStepBtnTextResId: Int
 
-    override fun createNavigator() = AppNavigator(requireActivity(), R.id.fragment_container)
+    override fun createNavigator() = ScreenNavigator(requireActivity(), R.id.fragment_container)
 
     @CallSuper
     override fun onViewCreatedCallback(view: View, savedInstanceState: Bundle?) {

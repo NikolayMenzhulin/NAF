@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.abstracts.AbstractFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.cicerone.navigator.ScreenNavigator
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.R
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.databinding.FragmentUserListBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.di.holder.CreateUserComponentHolder
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.create_user.di.module.CreateUserModule
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.user_list.di.injector.UserListFragmentInjector
-import com.github.terrakok.cicerone.androidx.AppNavigator
 
 /**
  * The screen with a list of created users.
  */
-class UserListFragment : AbstractFragment<UserListFragmentViewModel, FragmentUserListBinding, AppNavigator>(
+class UserListFragment : AbstractFragment<UserListFragmentViewModel, FragmentUserListBinding, ScreenNavigator>(
     FragmentUserListBinding::class.java
 ) {
 
@@ -22,7 +22,7 @@ class UserListFragment : AbstractFragment<UserListFragmentViewModel, FragmentUse
 
     override val injector = UserListFragmentInjector(this)
 
-    override fun createNavigator() = AppNavigator(requireActivity(), R.id.fragment_container)
+    override fun createNavigator() = ScreenNavigator(requireActivity(), R.id.fragment_container)
 
     override fun onViewCreatedCallback(view: View, savedInstanceState: Bundle?) {
         initToolbar()

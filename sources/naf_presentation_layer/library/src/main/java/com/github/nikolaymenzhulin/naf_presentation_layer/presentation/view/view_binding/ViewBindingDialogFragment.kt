@@ -7,25 +7,25 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.fragment_delegate.ViewBindingFragmentDelegate
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.ViewModelFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.ViewModelDialogFragment
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
- * Базовый fragment с поддержкой работы с view binding.
+ * Базовый dialog fragment с поддержкой работы с view binding.
  *
- * @param contentLayoutId layout id вёрстки для fragment
- * @param vbClass класс view binding, связанный с fragment
+ * @param contentLayoutId layout id вёрстки для dialog fragment
+ * @param vbClass класс view binding, связанный с dialog fragment
  *
- * @property vb view binding, связанный с fragment
+ * @property vb view binding, связанный с dialog fragment
  */
-abstract class ViewBindingFragment<VM : BaseViewModel, VB : ViewBinding>(
+abstract class ViewBindingDialogFragment<VM : BaseViewModel, VB : ViewBinding>(
     @LayoutRes contentLayoutId: Int,
     vbClass: Class<VB>
-) : ViewModelFragment<VM>() {
+) : ViewModelDialogFragment<VM>() {
 
     protected val vb: VB
         get() = delegate.vbHolder.vb
-            ?: throw IllegalStateException("The view binding available only when a view of a fragment is inflated")
+            ?: throw IllegalStateException("The view binding available only when a view of a dialog fragment is inflated")
 
     private val delegate by lazy { ViewBindingFragmentDelegate<VB>(contentLayoutId, vbClass) }
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.injectable.InjectableFragment
+import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.injectable.InjectableBottomSheetFragment
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.fragment_delegate.ViewModelFragmentDelegate
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.factory.ViewModelFactory
@@ -15,12 +15,12 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 /**
- * Базовый fragment с поддержкой работы с view model.
+ * Базовый bottom sheet fragment с поддержкой работы с view model.
  *
  * @property vmFactory фабрика для создания view model
- * @property vm view model, связанная с fragment
+ * @property vm view model, связанная с bottom sheet fragment
  */
-abstract class ViewModelFragment<VM : BaseViewModel> : InjectableFragment() {
+abstract class ViewModelBottomSheetFragment<VM : BaseViewModel> : InjectableBottomSheetFragment() {
 
     @Inject
     lateinit var vmFactory: ViewModelFactory.Factory
