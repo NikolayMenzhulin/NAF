@@ -1,7 +1,9 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.view_model
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -9,7 +11,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.R
 import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.fragment.view_model.di.injector.TestViewModelFragmentInjector
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_model.ViewModelFragment
 
-class TestViewModelFragment : ViewModelFragment<TestViewModelFragmentViewModel>(R.layout.fragment_view_model_test) {
+class TestViewModelFragment : ViewModelFragment<TestViewModelFragmentViewModel>() {
 
     override val vm: TestViewModelFragmentViewModel by viewModels()
 
@@ -17,6 +19,9 @@ class TestViewModelFragment : ViewModelFragment<TestViewModelFragmentViewModel>(
 
     private lateinit var currentNumberTv: TextView
     private lateinit var increaseBtn: Button
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        inflater.inflate(R.layout.fragment_view_model_test, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
