@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/delete_quiz_results"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/quiz_choosing_fragment_delete_quiz_results_menu_title"
+        app:showAsAction="always" />
+
+</menu>

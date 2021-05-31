@@ -16,12 +16,11 @@ abstract class AbstractComponentHolder<C : DaggerComponent, M : DaggerModule> {
     private var _component: C? = null
 
     /**
-     * Инициализировать [component], если он ещё не был инициализирован.
+     * Инициализировать [component].
      *
      * @param module Dagger-модуль, который будет использоваться при создании [component]
      */
     fun initComponent(module: M) {
-        if (_component != null) return
         _component = getComponentImpl(module)
     }
 

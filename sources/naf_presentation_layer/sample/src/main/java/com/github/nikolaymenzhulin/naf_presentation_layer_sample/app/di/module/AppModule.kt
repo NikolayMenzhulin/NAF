@@ -1,33 +1,22 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer_sample.app.di.module
 
+import android.content.Context
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.base.DaggerModule
-import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.error_handler.ErrorHandler
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.app.di.component.AppComponent
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.app.di.module.navigation.NavigationModule
 import com.github.nikolaymenzhulin.naf_presentation_layer_sample.app.di.scope.PerApp
-import com.github.nikolaymenzhulin.naf_presentation_layer_sample.utils.SimpleErrorHandler
-import com.github.terrakok.cicerone.Cicerone
-import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.storage.QuizResultsStorage
 import dagger.Module
 import dagger.Provides
 
 /**
  * Module for [AppComponent].
  */
-@Module
-class AppModule : DaggerModule {
-
-    private val cicerone: Cicerone<Router> = Cicerone.create()
+@Module(includes = [NavigationModule::class])
+class AppModule(private val context: Context) : DaggerModule {
 
     @PerApp
     @Provides
-    fun provideDefaultErrorHandler(): ErrorHandler = SimpleErrorHandler()
-
-    @PerApp
-    @Provides
-    fun provideRouter(): Router = cicerone.router
-
-    @PerApp
-    @Provides
-    fun provideNavigatorHolder(): NavigatorHolder = cicerone.getNavigatorHolder()
+    fun provideQuizResultsStorage(): QuizResultsStorage =
+        QuizResultsStorage(context.noBackupFilesDir.absolutePath)
 }

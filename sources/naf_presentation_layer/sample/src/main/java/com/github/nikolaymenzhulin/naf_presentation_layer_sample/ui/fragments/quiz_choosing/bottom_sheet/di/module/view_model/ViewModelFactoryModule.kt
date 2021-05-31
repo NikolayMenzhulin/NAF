@@ -1,0 +1,12 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.quiz_choosing.bottom_sheet.di.module.view_model
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.binds.BaseViewModelFactoryModule
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.quiz_choosing.bottom_sheet.QuizResultsDetailsBottomSheetViewModelFactory
+import com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.quiz_choosing.bottom_sheet.di.module.QuizResultsDetailsBottomSheetModule
+import dagger.Module
+
+/**
+ * Submodule of [QuizResultsDetailsBottomSheetModule].
+ */
+@Module
+interface ViewModelFactoryModule : BaseViewModelFactoryModule<QuizResultsDetailsBottomSheetViewModelFactory>

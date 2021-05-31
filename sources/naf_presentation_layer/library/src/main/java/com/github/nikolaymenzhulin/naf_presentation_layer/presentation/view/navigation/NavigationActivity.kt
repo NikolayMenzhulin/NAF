@@ -13,6 +13,9 @@ import javax.inject.Inject
 /**
  * Базовая activity с поддержкой навигации.
  *
+ * @param contentLayoutId layout id вёрстки для activity
+ * @param vbClass класс view binding, связанный с activity
+ *
  * @property navigatorHolder контейнер, содержащий используемый navigator
  * @property navigator навигатор, который использует activity
  */
@@ -24,7 +27,7 @@ abstract class NavigationActivity<VM : BaseViewModel, VB : ViewBinding, N : Navi
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
-    protected val navigator: N
+    val navigator: N
         get() = _navigator ?: throw IllegalStateException("The navigator has not been initialized yet")
 
     private var _navigator: N? = null

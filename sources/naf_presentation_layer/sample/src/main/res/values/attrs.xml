@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QuizInfoView">
+        <attr name="quizTitle" format="string" />
+        <attr name="quizDifficulty" format="enum">
+            <enum name="easy" value="0" />
+            <enum name="normal" value="1" />
+            <enum name="hard" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

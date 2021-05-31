@@ -5,9 +5,11 @@ apply from: project.android_sample_module
 dependencies {
     implementation project(':naf_presentation_layer')
 
+    implementation Android.material
     implementation Android.Ktx.activityKtx
     implementation Android.Ktx.fragmentKtx
     implementation NikolayMenzhulin.logger
+    implementation NikolayMenzhulin.simpleStorage
     implementation Cicerone.cicerone
     implementation Dagger.dagger
     kapt Dagger.daggerCompiler

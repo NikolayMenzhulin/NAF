@@ -10,4 +10,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
 abstract class NavigationViewModel<ND : AbstractNavDelegate<*, *>> : CoroutineViewModel() {
 
     protected abstract val navDelegate: ND
+
+    /**
+     * Закрыть экран.
+     */
+    open fun exit() {
+        navDelegate.exit()
+    }
 }

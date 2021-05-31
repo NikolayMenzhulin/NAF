@@ -1,24 +1,38 @@
 <resources>
     <string name="app_name">NAF Presentation Layer Sample</string>
 
-    <!-- UserListFragment -->
-    <string name="user_list_toolbar_title">Users</string>
-    <string name="user_list_create_user_menu_title">Create user</string>
-    <string name="user_list_empty_list_text">No users…</string>
+    <!-- QuizInfoView -->
+    <string name="quiz_info_view_quiz_difficulty_title">Difficulty:</string>
+    <string name="quiz_info_view_quiz_results_title">Results:</string>
+    <string name="quiz_info_view_quiz_results_format">%d from %d</string>
 
-    <!-- GenerateNameFragment -->
-    <string name="generate_name_toolbar_title">Generate name</string>
-    <string name="generate_name_name_placeholder_text">Generate name</string>
-    <string name="generate_name_next_btn_text">Next step</string>
+    <!-- QuizResultsDetailsView -->
+    <string name="quiz_results_details_view_quiz_answer_format">%d. %s</string>
 
-    <!-- GenerateSurnameFragment -->
-    <string name="generate_surname_toolbar_title">Generate surname</string>
-    <string name="generate_surname_surname_placeholder_text">Generate surname</string>
-    <string name="generate_surname_next_btn_text">Next step</string>
+    <!-- QuizChoosingFragment -->
+    <string name="quiz_choosing_fragment_toolbar_title">Quiz</string>
+    <string name="quiz_choosing_fragment_delete_quiz_results_menu_title">Delete quiz results</string>
+    <string name="quiz_choosing_fragment_first_quiz_title">Easy Peasy Quiz</string>
+    <string name="quiz_choosing_fragment_second_quiz_title">Regular Quiz</string>
+    <string name="quiz_choosing_fragment_third_quiz_title">God Blessed Quiz</string>
+    <string name="quiz_choosing_fragment_not_passed_quiz_toast_text">This quiz has not been passed yet</string>
 
-    <!-- GenerateAgeFragment -->
-    <string name="generate_age_toolbar_title">Generate age</string>
-    <string name="generate_age_age_placeholder_text">Generate age</string>
-    <string name="generate_age_next_btn_text">Create user</string>
+    <!-- QuizPassingFragment -->
+    <string name="quiz_passing_fragment_toolbar_title">Passing Quiz</string>
+    <string name="quiz_passing_fragment_next_stage_btn_text">Next stage</string>
+    <string name="quiz_passing_fragment_complete_quiz_btn_text">Complete quiz</string>
 
+    <!-- QuizResultsFragment -->
+    <string name="quiz_results_fragment_toolbar_title">Quiz Results</string>
+    <string name="quiz_results_fragment_quiz_results_title">Your results is:</string>
+    <string name="quiz_results_fragment_back_to_quiz_choosing_btn_text">Back to quiz choosing</string>
+    <string name="quiz_results_fragment_excellent_quiz_status">Excellent!</string>
+    <string name="quiz_results_fragment_good_quiz_status">Good!</string>
+    <string name="quiz_results_fragment_not_bad_quiz_status">Not bad!</string>
+    <string name="quiz_results_fragment_quiz_results_format">%d from %d</string>
+
+    <!-- DeleteQuizResultsDialog -->
+    <string name="delete_quiz_results_dialog_title">Are you sure that you want to delete all quiz results?</string>
+    <string name="delete_quiz_results_dialog_positive_btn_text">Yes</string>
+    <string name="delete_quiz_results_dialog_negative_btn_text">No</string>
 </resources>

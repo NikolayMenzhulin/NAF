@@ -9,7 +9,7 @@ class App : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        AppComponentHolder.initComponent(AppModule())
+        AppComponentHolder.initComponent(AppModule(context = applicationContext))
     }
 
     override fun onTerminate() {
