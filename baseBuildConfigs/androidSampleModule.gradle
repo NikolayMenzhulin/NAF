@@ -9,6 +9,9 @@ android {
     defaultConfig {
         minSdkVersion min_sdk_sample_v
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {

@@ -1,0 +1,8 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.view_binding.base.di.module.view_model
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.view_binding.base.TestViewBindingActivityViewModelFactory
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.binds.BaseViewModelFactoryModule
+import dagger.Module
+
+@Module
+interface ViewModelFactoryModule : BaseViewModelFactoryModule<TestViewBindingActivityViewModelFactory>

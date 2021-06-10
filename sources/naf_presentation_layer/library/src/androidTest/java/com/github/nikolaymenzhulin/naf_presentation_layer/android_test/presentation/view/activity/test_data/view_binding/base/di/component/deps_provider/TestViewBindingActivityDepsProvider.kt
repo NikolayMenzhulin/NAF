@@ -1,0 +1,5 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.activity.test_data.view_binding.base.di.component.deps_provider
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.app.di.component.deps_provider.AppDepsProvider
+
+interface TestViewBindingActivityDepsProvider : AppDepsProvider

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.nikolaymenzhulin.naf_presentation_layer.android_test">
+
+    <application
+        android:name=".app.App"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity android:name=".presentation.view.activity.test_data.injectable.TestInjectableActivity" />
+
+        <activity android:name=".presentation.view.activity.test_data.view_model.TestViewModelActivity" />
+
+        <activity android:name=".presentation.view.activity.test_data.view_binding.bind.TestBindViewBindingActivity" />
+
+        <activity android:name=".presentation.view.activity.test_data.view_binding.inflate.TestInflateViewBindingActivity" />
+
+        <activity android:name=".presentation.view.fragment.test_data.host_activity.TestFragmentHostActivity" />
+
+        <activity android:name=".presentation.view_model.test_data.activity.TestCoroutineActivity" />
+
+    </application>
+
+</manifest>

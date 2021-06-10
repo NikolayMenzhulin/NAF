@@ -1,0 +1,97 @@
+requiredParams:
+  name: Create a new Dagger component with holder for it
+  description: Creates a new Dagger component with holder for it based on AbstractComponentHolder.
+
+widgets:
+  - stringParameter:
+      id: shortComponentName
+      name: Сomponent name (without "Component" word)
+      help: Enter the name for the component to create (without "Component" word)
+      constraints:
+        - nonempty
+      default: Blank
+
+  - booleanParameter:
+      id: hasParentComponent
+      name: Add a parent component to the component to be created
+      help: Select this if the component to be created has a parent component
+      default: false
+
+  - stringParameter:
+      id: shortParentComponentName
+      name: Parent component name (without "Component" word)
+      help: Enter the name of the parent component for the component to be created (without "Component" word)
+      constraints:
+        - nonempty
+      default: App
+      visibility: ${hasParentComponent}
+
+  - stringParameter:
+      id: parentComponentPackagePath
+      name: Full path to "di" package of the parent component (including "di")
+      help: Enter the full path to "di" package of the parent component (including "di")
+      constraints:
+        - nonempty
+      default: path.to.di.package
+      visibility: ${hasParentComponent}
+
+  - stringParameter:
+      id: componentName
+      name: Component name
+      help: ...
+      default: ${shortComponentName}Component
+      suggest: ${shortComponentName}Component
+      visibility: false
+
+  - stringParameter:
+      id: componentHolderName
+      name: Component holder name
+      help: ...
+      default: ${shortComponentName}ComponentHolder
+      suggest: ${shortComponentName}ComponentHolder
+      visibility: false
+
+  - stringParameter:
+      id: depsProviderName
+      name: Dependensies provider name
+      help: ...
+      default: ${shortComponentName}DepsProvider
+      suggest: ${shortComponentName}DepsProvider
+      visibility: false
+
+  - stringParameter:
+      id: moduleName
+      name: Module name
+      help: ...
+      default: ${shortComponentName}Module
+      suggest: ${shortComponentName}Module
+      visibility: false
+
+  - stringParameter:
+      id: scopeName
+      name: Scope name
+      help: ...
+      default: Per${shortComponentName}
+      suggest: Per${shortComponentName}
+      visibility: false
+
+recipe:
+  - instantiate:
+      from: /root/src/di/component/Component.kt.ftl
+      to: ${srcOut}/di/component/${componentName}.kt
+
+  - instantiate:
+      from: /root/src/di/holder/ComponentHolder.kt.ftl
+      to: ${srcOut}/di/holder/${componentHolderName}.kt
+
+  - instantiate:
+      from: /root/src/di/component/deps_provider/DepsProvider.kt.ftl
+      to: ${srcOut}/di/component/deps_provider/${depsProviderName}.kt
+
+  - instantiate:
+      from: /root/src/di/module/Module.kt.ftl
+      to: ${srcOut}/di/module/${moduleName}.kt
+
+  - instantiate:
+      from: /root/src/di/scope/Scope.kt.ftl
+      to: ${srcOut}/di/scope/${scopeName}.kt

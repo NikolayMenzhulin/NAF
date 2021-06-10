@@ -1,0 +1,8 @@
+package com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity.di.module.view_model
+
+import com.github.nikolaymenzhulin.naf_presentation_layer.android_test.presentation.view.fragment.test_data.host_activity.TestFragmentHostActivityViewModelFactory
+import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.binds.BaseViewModelFactoryModule
+import dagger.Module
+
+@Module
+interface ViewModelFactoryModule : BaseViewModelFactoryModule<TestFragmentHostActivityViewModelFactory>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="increase_btn_text">Increase</string>
+    <string name="create_flow_response_btn_text">Create error FlowResponse</string>
+    <string name="start_coroutine_by_launch_btn_text">Start coroutine by launch</string>
+    <string name="start_coroutine_by_async_btn_text">Start coroutine by async</string>
+    <string name="start_coroutine_by_launch_in_btn_text">Start coroutine by launchIn</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_fragment_quiz_choosing"
+        app:title="@string/quiz_choosing_fragment_toolbar_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.quiz_choosing.widget.QuizInfoView
+                android:id="@+id/easy_quiz_info_v"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:quizDifficulty="easy"
+                app:quizTitle="@string/quiz_choosing_fragment_first_quiz_title" />
+
+            <com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.quiz_choosing.widget.QuizInfoView
+                android:id="@+id/normal_quiz_info_v"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:quizDifficulty="normal"
+                app:quizTitle="@string/quiz_choosing_fragment_second_quiz_title" />
+
+            <com.github.nikolaymenzhulin.naf_presentation_layer_sample.ui.fragments.quiz_choosing.widget.QuizInfoView
+                android:id="@+id/hard_quiz_info_v"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:quizDifficulty="hard"
+                app:quizTitle="@string/quiz_choosing_fragment_third_quiz_title" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

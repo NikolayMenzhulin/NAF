@@ -1,0 +1,262 @@
+requiredParams:
+  name: Create a new screen
+  description: Creates a new screen based on AbstractFragment.
+
+widgets:
+  - stringParameter:
+      id: screenName
+      name: Screen name (without "Fragment" word)
+      help: Enter the name for the screen to create (without "Fragment" word)
+      constraints:
+        - nonempty
+      default: Blank
+
+  - booleanParameter:
+      id: hasPackage
+      name: Add a package for the screen
+      help: Select this if the screen should has the package
+      default: false
+
+  - stringParameter:
+      id: screenPackageName
+      name: Screen package name
+      help: Enter the name for the package for screen to create
+      constraints:
+        - nonempty
+      default: screen
+      visibility: ${hasPackage}
+
+  - booleanParameter:
+      id: hasParentComponent
+      name: Add a parent component to the screen component
+      help: Select this if the screen component has a parent component
+      default: false
+
+  - stringParameter:
+      id: shortParentComponentName
+      name: Parent component name (without "Component" word)
+      help: Enter the name of the parent component for the screen component (without "Component" word)
+      constraints:
+        - nonempty
+      default: App
+      visibility: ${hasParentComponent}
+
+  - stringParameter:
+      id: parentComponentPackagePath
+      name: Full path to "di" package of the parent component (including "di")
+      help: Enter the full path to "di" package of the parent component (including "di")
+      constraints:
+        - nonempty
+      default: path.to.di.package
+      visibility: ${hasParentComponent}
+
+  - stringParameter:
+      id: fragmentName
+      name: Fragment name
+      help: ...
+      default: ${screenName}Fragment
+      suggest: ${screenName}Fragment
+      visibility: false
+
+  - stringParameter:
+      id: viewBindingName
+      name: ViewBinding name
+      help: ...
+      default: Fragment${screenName}Binding
+      suggest: Fragment${screenName}Binding
+      visibility: false
+
+  - stringParameter:
+      id: navDelegateName
+      name: Navigation delegate name
+      help: ...
+      default: ${fragmentName}NavDelegate
+      suggest: ${fragmentName}NavDelegate
+      visibility: false
+
+  - stringParameter:
+      id: routeName
+      name: Route name
+      help: ...
+      default: ${fragmentName}Route
+      suggest: ${fragmentName}Route
+      visibility: false
+
+  - stringParameter:
+      id: viewModelName
+      name: ViewModel name
+      help: ...
+      default: ${fragmentName}ViewModel
+      suggest: ${fragmentName}ViewModel
+      visibility: false
+
+  - stringParameter:
+      id: viewModelFactoryName
+      name: ViewModelFactory name
+      help: ...
+      default: ${viewModelName}Factory
+      suggest: ${viewModelName}Factory
+      visibility: false
+
+  - stringParameter:
+      id: componentName
+      name: Component name
+      help: ...
+      default: ${fragmentName}Component
+      suggest: ${fragmentName}Component
+      visibility: false
+
+  - stringParameter:
+      id: componentHolderName
+      name: Component holder name
+      help: ...
+      default: ${fragmentName}ComponentHolder
+      suggest: ${fragmentName}ComponentHolder
+      visibility: false
+
+  - stringParameter:
+      id: depsProviderName
+      name: Dependencies provider name
+      help: ...
+      default: ${fragmentName}DepsProvider
+      suggest: ${fragmentName}DepsProvider
+      visibility: false
+
+  - stringParameter:
+      id: moduleName
+      name: Module name
+      help: ...
+      default: ${fragmentName}Module
+      suggest: ${fragmentName}Module
+      visibility: false
+
+  - stringParameter:
+      id: injectorName
+      name: Injector name
+      help: ...
+      default: ${fragmentName}Injector
+      suggest: ${fragmentName}Injector
+      visibility: false
+
+  - stringParameter:
+      id: layoutName
+      name: Layout name
+      help: ...
+      default: fragment_${screenName.classToResource()}
+      suggest: fragment_${screenName.classToResource()}
+      visibility: false
+
+recipe:
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/Fragment.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${fragmentName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/Fragment.kt.ftl
+            to: ${srcOut}/${fragmentName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${navDelegateName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${navDelegateName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${routeName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${routeName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/ViewModel.kt.ftl
+            to: ${srcOut}/${screenPackageName}/${viewModelName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/ViewModel.kt.ftl
+            to: ${srcOut}/${viewModelName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/component/Component.kt.ftl
+            to: ${srcOut}/${screenPackageName}/di/component/${componentName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/component/Component.kt.ftl
+            to: ${srcOut}/di/component/${componentName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/holder/ComponentHolder.kt.ftl
+            to: ${srcOut}/${screenPackageName}/di/holder/${componentHolderName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/holder/ComponentHolder.kt.ftl
+            to: ${srcOut}/di/holder/${componentHolderName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/component/deps_provider/DepsProvider.kt.ftl
+            to: ${srcOut}/${screenPackageName}/di/component/deps_provider/${depsProviderName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/component/deps_provider/DepsProvider.kt.ftl
+            to: ${srcOut}/di/component/deps_provider/${depsProviderName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/module/Module.kt.ftl
+            to: ${srcOut}/${screenPackageName}/di/module/${moduleName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/module/Module.kt.ftl
+            to: ${srcOut}/di/module/${moduleName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/module/view_model/ViewModelFactoryModule.kt.ftl
+            to: ${srcOut}/${screenPackageName}/di/module/view_model/ViewModelFactoryModule.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/module/view_model/ViewModelFactoryModule.kt.ftl
+            to: ${srcOut}/di/module/view_model/ViewModelFactoryModule.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/injector/Injector.kt.ftl
+            to: ${srcOut}/${screenPackageName}/di/injector/${injectorName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/injector/Injector.kt.ftl
+            to: ${srcOut}/di/injector/${injectorName}.kt
+
+  - instantiate:
+      from: /root/res/layout/fragment_layout.xml.ftl
+      to: ${resOut}/layout/${layoutName}.xml

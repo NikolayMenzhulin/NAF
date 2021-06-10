@@ -7,6 +7,7 @@ dependencies {
 
     implementation Kotlin.kotlinxCoroutinesCore
     implementation Android.Ktx.lifecycleRuntimeKtx
+    implementation Android.Ktx.activityKtx
     implementation NikolayMenzhulin.flowResponseRetrofitAdapter
     implementation NikolayMenzhulin.simpleStorage
     implementation NikolayMenzhulin.logger

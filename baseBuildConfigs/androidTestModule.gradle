@@ -24,4 +24,5 @@ dependencies {
     androidTestRuntimeOnly JUnit.androidTestRunner
     androidTestImplementation Android.Test.core
     androidTestImplementation Android.Test.runner
+    androidTestImplementation Android.Test.espresso
 }

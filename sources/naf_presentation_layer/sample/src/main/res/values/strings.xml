@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">NAF Presentation Layer Sample</string>
+
+    <!-- QuizInfoView -->
+    <string name="quiz_info_view_quiz_difficulty_title">Difficulty:</string>
+    <string name="quiz_info_view_quiz_results_title">Results:</string>
+    <string name="quiz_info_view_quiz_results_format">%d from %d</string>
+
+    <!-- QuizResultsDetailsView -->
+    <string name="quiz_results_details_view_quiz_answer_format">%d. %s</string>
+
+    <!-- QuizChoosingFragment -->
+    <string name="quiz_choosing_fragment_toolbar_title">Quiz</string>
+    <string name="quiz_choosing_fragment_delete_quiz_results_menu_title">Delete quiz results</string>
+    <string name="quiz_choosing_fragment_first_quiz_title">Easy Peasy Quiz</string>
+    <string name="quiz_choosing_fragment_second_quiz_title">Regular Quiz</string>
+    <string name="quiz_choosing_fragment_third_quiz_title">God Blessed Quiz</string>
+    <string name="quiz_choosing_fragment_not_passed_quiz_toast_text">This quiz has not been passed yet</string>
+
+    <!-- QuizPassingFragment -->
+    <string name="quiz_passing_fragment_toolbar_title">Passing Quiz</string>
+    <string name="quiz_passing_fragment_next_stage_btn_text">Next stage</string>
+    <string name="quiz_passing_fragment_complete_quiz_btn_text">Complete quiz</string>
+
+    <!-- QuizResultsFragment -->
+    <string name="quiz_results_fragment_toolbar_title">Quiz Results</string>
+    <string name="quiz_results_fragment_quiz_results_title">Your results is:</string>
+    <string name="quiz_results_fragment_back_to_quiz_choosing_btn_text">Back to quiz choosing</string>
+    <string name="quiz_results_fragment_excellent_quiz_status">Excellent!</string>
+    <string name="quiz_results_fragment_good_quiz_status">Good!</string>
+    <string name="quiz_results_fragment_not_bad_quiz_status">Not bad!</string>
+    <string name="quiz_results_fragment_quiz_results_format">%d from %d</string>
+
+    <!-- DeleteQuizResultsDialog -->
+    <string name="delete_quiz_results_dialog_title">Are you sure that you want to delete all quiz results?</string>
+    <string name="delete_quiz_results_dialog_positive_btn_text">Yes</string>
+    <string name="delete_quiz_results_dialog_negative_btn_text">No</string>
+</resources>

@@ -1,0 +1,262 @@
+requiredParams:
+  name: Create a new dialog
+  description: Creates a new dialog based on AbstractBottomSheetFragment.
+
+widgets:
+  - stringParameter:
+      id: dialogName
+      name: Dialog name (without "BottomSheet" words)
+      help: Enter the name for the dialog to create (without "BottomSheet" words)
+      constraints:
+        - nonempty
+      default: Blank
+
+  - booleanParameter:
+      id: hasPackage
+      name: Add a package for the dialog
+      help: Select this if the dialog should has the package
+      default: false
+
+  - stringParameter:
+      id: dialogPackageName
+      name: Dialog package name
+      help: Enter the name for the package for dialog to create
+      constraints:
+        - nonempty
+      default: bottom_sheet
+      visibility: ${hasPackage}
+
+  - booleanParameter:
+      id: hasParentComponent
+      name: Add a parent component to the dialog component
+      help: Select this if the dialog component has a parent component
+      default: false
+
+  - stringParameter:
+      id: shortParentComponentName
+      name: Parent component name (without "Component" word)
+      help: Enter the name of the parent component for the dialog component (without "Component" word)
+      constraints:
+        - nonempty
+      default: App
+      visibility: ${hasParentComponent}
+
+  - stringParameter:
+      id: parentComponentPackagePath
+      name: Full path to "di" package of the parent component (including "di")
+      help: Enter the full path to "di" package of the parent component (including "di")
+      constraints:
+        - nonempty
+      default: path.to.di.package
+      visibility: ${hasParentComponent}
+
+  - stringParameter:
+      id: dialogFragmentName
+      name: Fragment name
+      help: ...
+      default: ${dialogName}BottomSheet
+      suggest: ${dialogName}BottomSheet
+      visibility: false
+
+  - stringParameter:
+      id: viewBindingName
+      name: ViewBinding name
+      help: ...
+      default: BottomSheet${dialogName}Binding
+      suggest: BottomSheet${dialogName}Binding
+      visibility: false
+
+  - stringParameter:
+      id: navDelegateName
+      name: Navigation delegate name
+      help: ...
+      default: ${dialogFragmentName}NavDelegate
+      suggest: ${dialogFragmentName}NavDelegate
+      visibility: false
+
+  - stringParameter:
+      id: routeName
+      name: Route name
+      help: ...
+      default: ${dialogFragmentName}Route
+      suggest: ${dialogFragmentName}Route
+      visibility: false
+
+  - stringParameter:
+      id: viewModelName
+      name: ViewModel name
+      help: ...
+      default: ${dialogFragmentName}ViewModel
+      suggest: ${dialogFragmentName}ViewModel
+      visibility: false
+
+  - stringParameter:
+      id: viewModelFactoryName
+      name: ViewModelFactory name
+      help: ...
+      default: ${viewModelName}Factory
+      suggest: ${viewModelName}Factory
+      visibility: false
+
+  - stringParameter:
+      id: componentName
+      name: Component name
+      help: ...
+      default: ${dialogFragmentName}Component
+      suggest: ${dialogFragmentName}Component
+      visibility: false
+
+  - stringParameter:
+      id: componentHolderName
+      name: Component holder name
+      help: ...
+      default: ${dialogFragmentName}ComponentHolder
+      suggest: ${dialogFragmentName}ComponentHolder
+      visibility: false
+
+  - stringParameter:
+      id: depsProviderName
+      name: Dependencies provider name
+      help: ...
+      default: ${dialogFragmentName}DepsProvider
+      suggest: ${dialogFragmentName}DepsProvider
+      visibility: false
+
+  - stringParameter:
+      id: moduleName
+      name: Module name
+      help: ...
+      default: ${dialogFragmentName}Module
+      suggest: ${dialogFragmentName}Module
+      visibility: false
+
+  - stringParameter:
+      id: injectorName
+      name: Injector name
+      help: ...
+      default: ${dialogFragmentName}Injector
+      suggest: ${dialogFragmentName}Injector
+      visibility: false
+
+  - stringParameter:
+      id: layoutName
+      name: Layout name
+      help: ...
+      default: bottom_sheet_${dialogName.classToResource()}
+      suggest: bottom_sheet_${dialogName.classToResource()}
+      visibility: false
+
+recipe:
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/BottomSheetFragment.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/${dialogFragmentName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/BottomSheetFragment.kt.ftl
+            to: ${srcOut}/${dialogFragmentName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/${navDelegateName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/NavDelegate.kt.ftl
+            to: ${srcOut}/${navDelegateName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/${routeName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/Route.kt.ftl
+            to: ${srcOut}/${routeName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/ViewModel.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/${viewModelName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/ViewModel.kt.ftl
+            to: ${srcOut}/${viewModelName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/component/Component.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/di/component/${componentName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/component/Component.kt.ftl
+            to: ${srcOut}/di/component/${componentName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/holder/ComponentHolder.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/di/holder/${componentHolderName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/holder/ComponentHolder.kt.ftl
+            to: ${srcOut}/di/holder/${componentHolderName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/component/deps_provider/DepsProvider.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/di/component/deps_provider/${depsProviderName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/component/deps_provider/DepsProvider.kt.ftl
+            to: ${srcOut}/di/component/deps_provider/${depsProviderName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/module/Module.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/di/module/${moduleName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/module/Module.kt.ftl
+            to: ${srcOut}/di/module/${moduleName}.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/module/view_model/ViewModelFactoryModule.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/di/module/view_model/ViewModelFactoryModule.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/module/view_model/ViewModelFactoryModule.kt.ftl
+            to: ${srcOut}/di/module/view_model/ViewModelFactoryModule.kt
+
+  - predicate:
+      validIf: ${hasPackage}
+      commands:
+        - instantiate:
+            from: /root/src/di/injector/Injector.kt.ftl
+            to: ${srcOut}/${dialogPackageName}/di/injector/${injectorName}.kt
+      elseCommands:
+        - instantiate:
+            from: /root/src/di/injector/Injector.kt.ftl
+            to: ${srcOut}/di/injector/${injectorName}.kt
+
+  - instantiate:
+      from: /root/res/layout/bottom_sheet_layout.xml.ftl
+      to: ${resOut}/layout/${layoutName}.xml

@@ -20,18 +20,22 @@ sealed class DepsVersions {
         companion object {
 
             const val appCompatV = "1.2.0"
+            const val multidexV = "2.0.1"
+            const val materialV = "1.3.0"
         }
 
         object Ktx : Android() {
 
             const val coreKtxV = "1.3.2"
             const val lifecycleRuntimeKtxV = "2.3.1"
+            const val activityKtxV = "1.2.2"
+            const val fragmentKtxV = "1.3.3"
         }
 
         object Test : Android() {
 
-            const val coreV = "1.3.0"
-            const val runnerV = "1.3.0"
+            const val baseTestDepsV = "1.3.0"
+            const val espressoV = "3.3.0"
         }
     }
 
@@ -40,6 +44,16 @@ sealed class DepsVersions {
         const val flowResponseRetrofitAdapterV = "1.2.1"
         const val simpleStorageV = "1.0.1"
         const val loggerV = "1.1.1"
+    }
+
+    object Dagger : DepsVersions() {
+
+        const val daggerV = "2.34"
+    }
+
+    object Cicerone : DepsVersions() {
+
+        const val ciceroneV = "7.0"
     }
 
     object OkHttp : DepsVersions() {
