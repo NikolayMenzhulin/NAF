@@ -2,7 +2,7 @@ import static com.github.nikolaymenzhulin.build_src.Deps.GradlePlugin
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
@@ -14,7 +14,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     project.ext {
