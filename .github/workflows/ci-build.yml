@@ -20,14 +20,17 @@ jobs:
         with:
           java-version: 8
 
-      - name: Build
-        uses: eskatos/gradle-command-action@v1
-        with:
-          gradle-version: 6.8.3
-          arguments: build
+      - name: Unit tests
+        run: ./gradlew test
 
       - name: Instrumented tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: ./gradlew connectedCheck
+
+      - name: Build
+        uses: eskatos/gradle-command-action@v1
+        with:
+          gradle-version: 6.8.3
+          arguments: build
