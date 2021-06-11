@@ -10,7 +10,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.injectable.fragment_delegate.InjectableFragmentDelegate
 
 /**
- * Базовый fragment с поддержкой инъекции зависимостей.
+ * The base fragment with support for dependency injection.
  */
 abstract class InjectableFragment : Fragment(), InjectableView, LifecycleObserver {
 
@@ -27,7 +27,7 @@ abstract class InjectableFragment : Fragment(), InjectableView, LifecycleObserve
     }
 
     /**
-     * Callback, который будет вызван сразу после вызова onCreate у activity, с которой связан fragment.
+     * The callback that called after the onCreate call of the parent activity of the fragment.
      */
     @CallSuper
     @OnLifecycleEvent(ON_CREATE)

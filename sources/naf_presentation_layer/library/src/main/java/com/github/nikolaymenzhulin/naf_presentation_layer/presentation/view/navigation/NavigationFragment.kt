@@ -7,12 +7,12 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
 import com.github.terrakok.cicerone.Navigator
 
 /**
- * Базовый fragment с поддержкой навигации.
+ * The base fragment with Cicerone navigation support.
  *
- * @param contentLayoutId layout id вёрстки для activity
- * @param vbClass класс view binding, связанный с activity
+ * @param contentLayoutId the id of the layout for the fragment
+ * @param vbClass the class of the view binding associated with the fragment
  *
- * @property navigator навигатор, который использует родительская activity
+ * @property navigator the navigator that the parent activity is using
  */
 abstract class NavigationFragment<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,

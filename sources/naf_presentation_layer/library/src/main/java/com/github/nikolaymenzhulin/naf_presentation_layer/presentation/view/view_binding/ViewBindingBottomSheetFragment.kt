@@ -11,12 +11,12 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
- * Базовый bottom sheet fragment с поддержкой работы с view binding.
+ * The base bottom sheet dialog fragment with support for working with a view binding.
  *
- * @param contentLayoutId layout id вёрстки для bottom sheet fragment
- * @param vbClass класс view binding, связанный с bottom sheet fragment
+ * @param contentLayoutId the id of the layout for the bottom sheet dialog fragment
+ * @param vbClass the class of the view binding associated with the bottom sheet dialog fragment
  *
- * @property vb view binding, связанный с bottom sheet fragment
+ * @property vb the view binding associated with the bottom sheet dialog fragment
  */
 abstract class ViewBindingBottomSheetFragment<VM : BaseViewModel, VB : ViewBinding>(
     @LayoutRes contentLayoutId: Int,
@@ -25,7 +25,7 @@ abstract class ViewBindingBottomSheetFragment<VM : BaseViewModel, VB : ViewBindi
 
     protected val vb: VB
         get() = delegate.vbHolder.vb
-            ?: throw IllegalStateException("The view binding available only when a view of a bottom sheet fragment is inflated")
+            ?: throw IllegalStateException("The view binding available only when a view of a bottom sheet dialog fragment is inflated")
 
     private val delegate by lazy { ViewBindingFragmentDelegate<VB>(contentLayoutId, vbClass) }
 

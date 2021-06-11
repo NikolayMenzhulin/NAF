@@ -10,7 +10,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.injectable.fragment_delegate.InjectableFragmentDelegate
 
 /**
- * Базовый dialog fragment с поддержкой инъекции зависимостей.
+ * The base dialog fragment with support for dependency injection.
  */
 abstract class InjectableDialogFragment : AppCompatDialogFragment(), InjectableView, LifecycleObserver {
 
@@ -27,7 +27,7 @@ abstract class InjectableDialogFragment : AppCompatDialogFragment(), InjectableV
     }
 
     /**
-     * Callback, который будет вызван сразу после вызова onCreate у activity, с которой связан dialog fragment.
+     * The callback that called after the onCreate call of the parent activity of the dialog fragment.
      */
     @CallSuper
     @OnLifecycleEvent(ON_CREATE)

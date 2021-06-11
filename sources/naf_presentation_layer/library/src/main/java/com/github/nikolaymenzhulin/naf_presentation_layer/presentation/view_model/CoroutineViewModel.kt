@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.onEach
 import kotlin.coroutines.CoroutineContext
 
 /**
- * Базовый класс view model содержащий логику для работы с корутинами.
+ * The base class of a view model that contains the logic for working with coroutines.
  *
- * @property errorHandler обработчик ошибок
- * @property coroutineJobs map, где ключ - название корутины, запущенной во view model, а значение - [Job] этой корутины
+ * @property errorHandler the error handler for a view model
+ * @property coroutineJobs a map, where the key is the name of the coroutine launched in the view model, and the value is the [Job] of this coroutine
  */
 abstract class CoroutineViewModel : SavedStateViewModel() {
 
@@ -23,29 +23,29 @@ abstract class CoroutineViewModel : SavedStateViewModel() {
     private val coroutineJobs: MutableMap<String, Job> = mutableMapOf()
 
     /**
-     * Перехватить и обработать с помощью [errorHandler] все ошибки, возникшие во [FlowResponse].
+     * Catch and handle with the [errorHandler] any errors that occur in the [FlowResponse].
      *
-     * @return исходный [FlowResponse]
+     * @return the original [FlowResponse]
      */
     protected fun <T> FlowResponse<T>.handleErrors(): FlowResponse<T> = onEach(::handleErrorIfHas)
 
     /**
-     * Запустить корутину, чтобы начать получать данные из [Flow].
+     * Run the coroutine to start receiving the data from the [Flow].
      *
-     * @param context контект корутины
+     * @param context the coroutine context
      *
-     * @return новый [Job] запущенной корутины, либо уже существующий [Job] корутины, если она была запущена ранее
+     * @return a new [Job] of the running coroutine, or an already existing [Job] coroutine, if it was launched earlier
      */
     protected fun <T> Flow<T>.launchIn(context: CoroutineContext): Job = launch(context) { collect() }
 
     /**
-     * Запустить во view model корутину через [CoroutineScope.launch].
+     * Run the coroutine in a view model via [CoroutineScope.launch].
      *
-     * @param context контекст корутины
-     * @param start тип запуска корутины
-     * @param block блок кода корутины
+     * @param context the coroutine context
+     * @param start the coroutine launch type
+     * @param block the coroutine code
      *
-     * @return новый [Job] запущенной корутины, либо уже существующий [Job] корутины, если она была запущена ранее
+     * @return a new [Job] of the running coroutine, or an already existing [Job] coroutine, if it was launched earlier
      */
     protected fun launch(
         context: CoroutineContext,
@@ -58,13 +58,13 @@ abstract class CoroutineViewModel : SavedStateViewModel() {
     }
 
     /**
-     * Запустить во view model корутину через [CoroutineScope.async].
+     * Run the coroutine in a view model via [CoroutineScope.async].
      *
-     * @param context контекст корутины
-     * @param start тип запуска корутины
-     * @param block блок кода корутины
+     * @param context the coroutine context
+     * @param start the coroutine launch type
+     * @param block the coroutine code
      *
-     * @return новый [Job] запущенной корутины, либо уже существующий [Job] корутины, если она была запущена ранее
+     * @return a new [Job] of the running coroutine, or an already existing [Job] coroutine, if it was launched earlier
      */
     @Suppress("UNCHECKED_CAST")
     protected fun <T> async(

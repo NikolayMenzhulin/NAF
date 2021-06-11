@@ -6,10 +6,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.life
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
- * Базовый класс для реализации bottom sheet fragment с поддержкой инъекции зависимостей, работы с view model и view binding.
+ * The base class for implementing a bottom sheet dialog fragment with support for
+ * dependency injection, working with the view model, view binding.
  *
- * @param contentLayoutId layout id вёрстки для bottom sheet fragment
- * @param vbClass класс view binding, связанный с bottom sheet fragment
+ * @param contentLayoutId the id of the layout for the bottom sheet dialog fragment
+ * @param vbClass the class of the view binding associated with the bottom sheet dialog fragment
  */
 abstract class AbstractBottomSheetFragment<VM : BaseViewModel, VB : ViewBinding>(
     @LayoutRes contentLayoutId: Int,

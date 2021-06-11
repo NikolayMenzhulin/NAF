@@ -7,10 +7,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
 import com.github.terrakok.cicerone.Navigator
 
 /**
- * Базовый класс для реализации fragment с поддержкой инъекции зависимостей, работы с view model, view binding и с навигацией.
+ * The base class for implementing a fragment with support for
+ * dependency injection, working with the view model, view binding and Cicerone navigation.
  *
- * @param contentLayoutId layout id вёрстки для fragment
- * @param vbClass класс view binding, связанный с fragment
+ * @param contentLayoutId the id of the layout for the fragment
+ * @param vbClass the class of the view binding associated with the fragment
  */
 abstract class AbstractFragment<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,

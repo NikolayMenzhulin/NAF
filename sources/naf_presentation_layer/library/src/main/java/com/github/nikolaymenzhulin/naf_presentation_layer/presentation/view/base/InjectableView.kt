@@ -3,9 +3,9 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.bas
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.injector.AbstractViewInjector
 
 /**
- * Базовый интерфейс для view с поддержкой инъекции зависимостей.
+ * The base interface for a view with support for dependency injection.
  *
- * @property injector инжектор для инъекции зависимостей во view
+ * @property injector dependency injector for the view
  */
 interface InjectableView {
 

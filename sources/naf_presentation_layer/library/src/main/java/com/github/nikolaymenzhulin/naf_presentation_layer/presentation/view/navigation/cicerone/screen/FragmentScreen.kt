@@ -11,12 +11,12 @@ import com.github.terrakok.cicerone.androidx.Creator
 private typealias CiceroneFragmentScreen = com.github.terrakok.cicerone.androidx.FragmentScreen
 
 /**
- * Реализация [Screen] для fragment.
+ * Implementation of the [Screen] for fragments.
  *
- * @property enterAnimResId анимация fragment'а на который переходим
- * @property exitAnimResId анимация fragment'а с которого переходим
- * @property popEnterAnimResId анимация fragment'а на который возвращаемся
- * @property popExitAnimResId анимация fragment'а с которого возвращаемся
+ * @property enterAnimResId animation of the fragment to which we go
+ * @property exitAnimResId animation of the fragment from which we move
+ * @property popEnterAnimResId animation of the fragment to which we return
+ * @property popExitAnimResId animation of the fragment from which we return
  */
 interface FragmentScreen : CiceroneFragmentScreen {
 
@@ -39,15 +39,11 @@ interface FragmentScreen : CiceroneFragmentScreen {
             object : FragmentScreen {
 
                 override val screenKey = key ?: fragmentCreator::class.java.name
-
                 override val clearContainer = clearContainer
 
                 override val enterAnimResId: Int? = enterAnimResId
-
                 override val exitAnimResId: Int? = exitAnimResId
-
                 override val popEnterAnimResId: Int? = popEnterAnimResId
-
                 override val popExitAnimResId: Int? = popExitAnimResId
 
                 override fun createFragment(factory: FragmentFactory): Fragment = fragmentCreator.create(factory)

@@ -10,11 +10,11 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 
 /**
- * Фабрика для создания view model.
+ * The factory for creating a view model.
  *
- * @param owner view, которая содержит сохранённое состояние view model
- * @param defaultArgs аргументы, полученные от предыдущего экрана в стэке навигации
- * @param viewModelAssistedFactory assisted фабрика для создания view model
+ * @param owner view, which contains the saved state of the view model
+ * @param defaultArgs arguments received from the previous screen in the navigation stack
+ * @param viewModelAssistedFactory assisted factory to create the view model
  */
 class ViewModelFactory @AssistedInject constructor(
     @Assisted owner: SavedStateRegistryOwner,
@@ -23,18 +23,18 @@ class ViewModelFactory @AssistedInject constructor(
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
     /**
-     * Базовый интерфейс assisted фабрики, предоставляющей фабрику для создания view model.
+     * The base interface of the assisted factory providing the factory for creating a view model.
      */
     @AssistedFactory
     interface Factory {
 
         /**
-         * Создать [ViewModelFactory].
+         * Create a [ViewModelFactory].
          *
-         * @param owner view, которая содержит сохранённое состояние view model
-         * @param defaultArgs аргументы, полученные от предыдущего экрана в стэке навигации
+         * @param owner view, which contains the saved state of the view model
+         * @param defaultArgs arguments received from the previous screen in the navigation stack
          *
-         * @return созданная [ViewModelFactory]
+         * @return the created [ViewModelFactory]
          */
         fun create(owner: SavedStateRegistryOwner, defaultArgs: Bundle?): ViewModelFactory
     }

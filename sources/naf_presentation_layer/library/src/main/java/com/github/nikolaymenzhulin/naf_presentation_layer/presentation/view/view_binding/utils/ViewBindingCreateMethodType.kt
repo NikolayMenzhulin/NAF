@@ -1,10 +1,10 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.utils
 
 /**
- * Возможные типы создания view binding для view.
+ * Available creation types of view binding for a view.
  *
- * @property INFLATE создание view binding через метод inflate
- * @property BIND создание view binding через метод bind
+ * @property INFLATE create view binding using inflate method
+ * @property BIND create view binding using bind method
  */
 internal enum class ViewBindingCreateMethodType {
     INFLATE, BIND

@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleObserver
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base.InjectableView
 
 /**
- * Делегат, инкапсулирующий общую логику всех injectable fragment'ов.
+ * The delegate that contains the common logic for injectable fragments.
  */
 internal class InjectableFragmentDelegate<T>(
     private val fragment: T

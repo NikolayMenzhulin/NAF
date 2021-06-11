@@ -7,7 +7,7 @@ import dagger.Binds
 import dagger.Module
 
 /**
- * Базовый Dagger-модуль, предоставляющий фабрику для производства view model.
+ * The base Dagger module that provides a factory for producing a view model.
  */
 @Module
 interface BaseViewModelFactoryModule<F : ViewModelAssistedFactory<*>> : DaggerModule {

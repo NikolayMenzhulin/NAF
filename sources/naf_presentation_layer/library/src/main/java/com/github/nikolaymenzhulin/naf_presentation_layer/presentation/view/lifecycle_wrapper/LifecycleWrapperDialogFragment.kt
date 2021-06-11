@@ -12,10 +12,10 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
- * Базовый dialog fragment, оборачивающий основные методы жизненного цикла.
+ * The base dialog fragment that wraps lifecycle methods.
  *
- * @param contentLayoutId layout id вёрстки для dialog fragment
- * @param vbClass класс view binding, связанный с dialog fragment
+ * @param contentLayoutId the id of the layout for the dialog fragment
+ * @param vbClass the class of the view binding associated with the dialog fragment
  */
 abstract class LifecycleWrapperDialogFragment<VM : BaseViewModel, VB : ViewBinding>(
     @LayoutRes contentLayoutId: Int,
@@ -161,8 +161,8 @@ abstract class LifecycleWrapperDialogFragment<VM : BaseViewModel, VB : ViewBindi
     }
 
     /**
-     * Callback для подписки на данные из view model.
-     * Вызывается на этапе выполнения onViewCreated, после вызовов super.onViewCreated и onViewCreatedCallback.
+     * The callback to subscribe to data from view model.
+     * Called at the onViewCreated call, after calls super.onViewCreated and onViewCreatedCallback.
      */
     protected abstract fun onObserveViewModelCallback()
 }

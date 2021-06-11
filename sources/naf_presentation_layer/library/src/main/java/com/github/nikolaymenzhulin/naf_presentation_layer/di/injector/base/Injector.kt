@@ -1,12 +1,12 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.di.injector.base
 
 /**
- * Базовый интерфейс для класса - инжектора зависимостей.
+ * The base interface for a dependency injector class.
  */
 internal interface Injector {
 
     /**
-     * Произвести инъекцию зависимостей.
+     * Inject dependencies.
      */
     fun inject()
 }

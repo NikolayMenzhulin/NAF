@@ -1,35 +1,35 @@
 package com.github.nikolaymenzhulin.naf_service_layer.mapping.transformable
 
 /**
- * Базовый интерфейс для класса, реализующего возможность его трансформации в другой тип.
+ * The base interface for a class that implements the ability to transform it into another type.
  */
 interface Transformable<out T>
 
 /**
- * Интерфейс для класса, реализующего его простую трансформацию (без входных параметров) в другой тип.
+ * The interface for a class that implements its simple transformation (without input parameters) to another type.
  */
 interface SimpleTransformable<out T> : Transformable<T> {
 
     /**
-     * Метод трансформации.
+     * The transformation method.
      *
-     * @return трансформированный объект
+     * @return transformed object
      */
     fun transform(): T
 }
 
 /**
- * Интерфейс для класса, реализующего его трансформацию,
- * для успешного проведения которой необходим какой-либо входной параметр.
+ * The interface for a class that implements its transformation,
+ * for the successful implementation of which an input parameter is required.
  */
 interface DependentTransformable<out T, in D> : Transformable<T> {
 
     /**
-     * Метод трансформации.
+     * The transformation method.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement transformation
      *
-     * @return трансформированный объект
+     * @return transformed object
      */
     fun transform(dependency: D): T
 }

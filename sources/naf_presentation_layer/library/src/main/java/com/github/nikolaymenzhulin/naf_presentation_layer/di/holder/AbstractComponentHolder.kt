@@ -4,9 +4,9 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.DaggerCom
 import com.github.nikolaymenzhulin.naf_presentation_layer.di.module.base.DaggerModule
 
 /**
- * Базовый класс контейнера для Dagger-компонента.
+ * The base class for a holder of a Dagger component.
  *
- * @property component компонент, хранящийся в контейнере
+ * @property component the component that contains inside a holder
  */
 abstract class AbstractComponentHolder<C : DaggerComponent, M : DaggerModule> {
 
@@ -16,27 +16,27 @@ abstract class AbstractComponentHolder<C : DaggerComponent, M : DaggerModule> {
     private var _component: C? = null
 
     /**
-     * Инициализировать [component].
+     * Initialize the [component].
      *
-     * @param module Dagger-модуль, который будет использоваться при создании [component]
+     * @param module the Dagger module to be used when creating the [component]
      */
     fun initComponent(module: M) {
         _component = getComponentImpl(module)
     }
 
     /**
-     * Очистить [component], хранящийся в контейнере.
+     * Clear the [component] that contains inside a holder.
      */
     fun clearComponent() {
         _component = null
     }
 
     /**
-     * Получить компонент для сохранения в контейнере.
+     * Get a component for saving inside a holder.
      *
-     * @param module Dagger-модуль, который будет использоваться при создании компонента
+     * @param module the Dagger module to be used when creating the [component]
      *
-     * @return компонент для сохранения в контейнере
+     * @return the component for saving inside a holder
      */
     protected abstract fun getComponentImpl(module: M): C
 }

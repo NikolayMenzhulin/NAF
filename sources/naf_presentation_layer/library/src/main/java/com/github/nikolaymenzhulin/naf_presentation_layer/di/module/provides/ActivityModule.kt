@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 /**
- * Базовый Dagger-модуль, предоставляющий основные зависимости для экрана, основанного на activity.
+ * The base Dagger module that provides basic dependencies for an activity-based screen.
  */
 @Module
 abstract class ActivityModule<R : Route>(private val route: R) : DaggerModule {

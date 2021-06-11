@@ -4,16 +4,16 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
 /**
- * Базовый интерфейс assisted фабрики, предоставляющей view model.
+ * The base interface of the assisted factory providing the view model.
  */
 interface ViewModelAssistedFactory<VM : ViewModel> {
 
     /**
-     * Создать view model.
+     * Create a view model.
      *
-     * @param savedStateHandle [SavedStateHandle], связанный c view
+     * @param savedStateHandle the [SavedStateHandle] associated with a view
      *
-     * @return созданная view model
+     * @return the created view model
      */
     fun create(savedStateHandle: SavedStateHandle): VM
 }

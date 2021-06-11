@@ -10,7 +10,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.inje
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 /**
- * Базовый bottom sheet fragment с поддержкой инъекции зависимостей.
+ * The base bottom sheet dialog fragment with support for dependency injection.
  */
 abstract class InjectableBottomSheetFragment : BottomSheetDialogFragment(), InjectableView, LifecycleObserver {
 
@@ -27,7 +27,7 @@ abstract class InjectableBottomSheetFragment : BottomSheetDialogFragment(), Inje
     }
 
     /**
-     * Callback, который будет вызван сразу после вызова onCreate у activity, с которой связан bottom sheet fragment.
+     * The callback that called after the onCreate call of the parent activity of the bottom sheet dialog fragment.
      */
     @CallSuper
     @OnLifecycleEvent(ON_CREATE)

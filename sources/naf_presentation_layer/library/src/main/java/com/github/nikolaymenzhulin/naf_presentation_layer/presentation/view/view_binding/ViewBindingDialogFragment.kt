@@ -11,12 +11,12 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
- * Базовый dialog fragment с поддержкой работы с view binding.
+ * The base dialog fragment with support for working with a view binding.
  *
- * @param contentLayoutId layout id вёрстки для dialog fragment
- * @param vbClass класс view binding, связанный с dialog fragment
+ * @param contentLayoutId the id of the layout for the dialog fragment
+ * @param vbClass the class of the view binding associated with the dialog fragment
  *
- * @property vb view binding, связанный с dialog fragment
+ * @property vb the view binding associated with the dialog fragment
  */
 abstract class ViewBindingDialogFragment<VM : BaseViewModel, VB : ViewBinding>(
     @LayoutRes contentLayoutId: Int,

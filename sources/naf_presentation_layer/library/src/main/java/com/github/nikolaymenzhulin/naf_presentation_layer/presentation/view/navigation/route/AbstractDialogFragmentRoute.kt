@@ -5,23 +5,23 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navi
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.route.base.Route
 
 /**
- * Базовый класс route для диалога, основанного на dialog fragment или bottom sheet fragment.
+ * The base route class for the dialog-based screen.
  */
 abstract class AbstractDialogFragmentRoute<D : DialogFragment> : Route {
 
     /**
-     * Создать dialog fragment/bottom sheet fragment для открываемого диалога.
+     * Create a dialog for the screen to open.
      *
-     * @return dialog fragment/bottom sheet fragment для открываемого диалога.
+     * @return the dialog for the screen to open
      */
     protected abstract fun getDialog(): D
 
     /**
-     * Создать [DialogScreen] для открываемого диалога.
+     * Create an [DialogScreen] for the screen to open.
      *
-     * @param key ключ, идентифицирующий открываемый диалог
+     * @param key key identifying the screen to open
      *
-     * @return [DialogScreen] для открываемого диалога
+     * @return the [DialogScreen] for the screen to open
      */
     operator fun invoke(key: String = this::class.java.name): DialogScreen =
         DialogScreen(key) { getDialog() }

@@ -11,7 +11,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view_binding.utils.ViewBindingHolder
 
 /**
- * Делегат, инкапсулирующий общую логику всех view binding fragment'ов.
+ * The delegate that contains the common logic for view binding fragments.
  */
 internal class ViewBindingFragmentDelegate<VB : ViewBinding>(
     @LayoutRes private val contentLayoutId: Int,

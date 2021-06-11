@@ -3,16 +3,16 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mod
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.navigation_delegate.AbstractNavDelegate
 
 /**
- * Базовый класс view model c поддержкой навигации.
+ * The base class of a view model with navigation support.
  *
- * @property navDelegate делегат, инкапсулирующий логику навигации
+ * @property navDelegate the delegate that contains the navigation logic
  */
 abstract class NavigationViewModel<ND : AbstractNavDelegate<*, *>> : CoroutineViewModel() {
 
     protected abstract val navDelegate: ND
 
     /**
-     * Закрыть экран.
+     * Close the screen.
      */
     open fun exit() {
         navDelegate.exit()

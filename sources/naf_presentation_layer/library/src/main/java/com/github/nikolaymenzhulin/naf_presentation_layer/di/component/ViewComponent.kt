@@ -3,14 +3,14 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.di.component
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base.InjectableView
 
 /**
- * Базовый интерфейс для Dagger-компонентов, предназначенных для инъекции зависимостей во view.
+ * The base interface for Dagger components that inject dependencies into a view.
  */
 interface ViewComponent<V : InjectableView> : DaggerComponent {
 
     /**
-     * Произвести инъекцию зависимостей во view.
+     * Inject dependencies into a view.
      *
-     * @param view view для инъекции зависимостей
+     * @param view the view for injection of dependencies
      */
     fun inject(view: V)
 }

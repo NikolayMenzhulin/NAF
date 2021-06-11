@@ -15,10 +15,10 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 /**
- * Базовый bottom sheet fragment с поддержкой работы с view model.
+ * The base bottom sheet dialog fragment with support for working with a view model.
  *
- * @property vmFactory фабрика для создания view model
- * @property vm view model, связанная с bottom sheet fragment
+ * @property vmFactory the factory for creating the view model
+ * @property vm the view model associated with the bottom sheet dialog fragment
  */
 abstract class ViewModelBottomSheetFragment<VM : BaseViewModel> : InjectableBottomSheetFragment() {
 
@@ -43,12 +43,12 @@ abstract class ViewModelBottomSheetFragment<VM : BaseViewModel> : InjectableBott
     }
 
     /**
-     * Подписаться на данные из [Flow].
+     * Observe the data inside the [Flow].
      *
-     * @param lifecycleOwner жизненный цикл view для привязки к нему состояния подписки
-     * @param observer действия для выполнения при получении данных от [Flow]
+     * @param lifecycleOwner the lifecycle of a view to bind the subscription state to it
+     * @param observer actions to perform when receiving data from the [Flow]
      *
-     * @return [Job] корутины, запущенной в результате создания подписки
+     * @return the [Job] of the coroutine launched as a result of creating a subscription
      */
     protected fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, observer: (T) -> Unit): Job =
         lifecycleOwner.lifecycleScope.launchWhenStarted {

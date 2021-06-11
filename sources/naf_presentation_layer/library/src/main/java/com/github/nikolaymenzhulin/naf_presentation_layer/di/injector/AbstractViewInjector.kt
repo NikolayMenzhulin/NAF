@@ -4,9 +4,9 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.di.injector.base.ViewI
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base.InjectableView
 
 /**
- * Базовый класс инжектора зависимостей во view.
+ * The base class of a dependency injector for a view.
  *
- * @param view view для инъекции зависимостей
+ * @param view the view for injection of dependencies
  */
 abstract class AbstractViewInjector<V : InjectableView>(private val view: V) : ViewInjector<V> {
 

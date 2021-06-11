@@ -8,17 +8,17 @@ import com.github.nikolaymenzhulin.naf_service_layer.mapping.transformable.Trans
 import kotlinx.coroutines.flow.map
 
 /**
- * Базовый интерфейс для класса-маппера моделей при работе с сетью.
+ * The base interface for a mapper class that maps models when working with a network.
  */
 interface NetworkMapper {
 
     /**
-     * Маппинг response модели в domain модель внутри [FlowResponse].
-     * Используемые обобщённые типы: RM - ResponseModel, DM - DomainModel.
+     * Mapping the response model to the domain model inside the [FlowResponse].
+     * Used generics: RM - ResponseModel, DM - DomainModel.
      *
-     * @return [FlowResponse] c состояниями ответа от сервера, внутри которого
-     * был произвёдён маппинг данных внутри состояния [Response.Success]
-     * из response модели в domain модель
+     * @return the [FlowResponse] with the server response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from the response model to the domain model
      */
     fun <RM : SimpleTransformable<DM>, DM> FlowResponse<RM>.mapToDomain(): FlowResponse<DM> =
         mapInternal { responseModel ->
@@ -26,14 +26,14 @@ interface NetworkMapper {
         }
 
     /**
-     * Маппинг response модели в domain модель внутри [FlowResponse].
-     * Используемые обобщённые типы: RM - ResponseModel, DM - DomainModel, D - Dependency.
+     * Mapping the response model to the domain model inside the [FlowResponse].
+     * Used generics: RM - ResponseModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * @return [FlowResponse] c состояниями ответа от сервера, внутри которого
-     * был произвёдён маппинг данных внутри состояния [Response.Success]
-     * из response модели в domain модель
+     * @return the [FlowResponse] with the server response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from the response model to the domain model
      */
     fun <RM : DependentTransformable<DM, D>, DM, D> FlowResponse<RM>.mapToDomain(
         dependency: D,
@@ -43,12 +43,12 @@ interface NetworkMapper {
         }
 
     /**
-     * Маппинг response моделей в domain модели внутри [FlowResponse].
-     * Используемые обобщённые типы: RM - ResponseModel, DM - DomainModel.
+     * Mapping the response models to the domain models inside the [FlowResponse].
+     * Used generics: RM - ResponseModel, DM - DomainModel.
      *
-     * @return [FlowResponse] c состояниями ответа от сервера, внутри которого
-     * был произвёдён маппинг данных внутри состояния [Response.Success]
-     * из response моделей в domain модели
+     * @return the [FlowResponse] with the server response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from response models to domain models
      */
     fun <RM : SimpleTransformable<DM>, DM> FlowResponse<List<RM>>.mapListToDomain(): FlowResponse<List<DM>> =
         mapListInternal { responseModels ->
@@ -56,14 +56,14 @@ interface NetworkMapper {
         }
 
     /**
-     * Маппинг response моделей в domain модели внутри [FlowResponse].
-     * Используемые обобщённые типы: RM - ResponseModel, DM - DomainModel, D - Dependency.
+     * Mapping the response models to the domain models inside the [FlowResponse].
+     * Used generics: RM - ResponseModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * @return [FlowResponse] c состояниями ответа от сервера, внутри которого
-     * был произвёдён маппинг данных внутри состояния [Response.Success]
-     * из response моделей в domain модели
+     * @return the [FlowResponse] with the server response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from response models to domain models
      */
     fun <RM : DependentTransformable<DM, D>, DM, D> FlowResponse<List<RM>>.mapListToDomain(
         dependency: D,

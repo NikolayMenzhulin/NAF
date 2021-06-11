@@ -7,44 +7,44 @@ import com.github.nikolaymenzhulin.naf_service_layer.mapping.transformable.Simpl
 import kotlinx.coroutines.flow.*
 
 /**
- * Базовый интерфейс для класса-маппера моделей при работе с хранилищами (база данных, кэш и т. д.).
+ * The base interface for a mapper class that maps models when working with storages (database, cache, etc.).
  */
 interface StorageMapper {
 
     /**
-     * Маппинг storage модели в domain модель.
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel.
+     * Mapping the storage model to the domain model.
+     * Used generics: SM - StorageModel, DM - DomainModel.
      *
-     * @return модель, преобразованная из storage модели в domain модель
+     * @return the model that mapped from the storage model to the domain model
      */
     fun <SM : SimpleTransformable<DM>, DM> SM?.mapToDomain(): DM? = this?.transform()
 
     /**
-     * Маппинг storage модели в domain модель.
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel, D - Dependency.
+     * Mapping the storage model to the domain model.
+     * Used generics: SM - StorageModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * @return модель, преобразованная из storage модели в domain модель
+     * @return the model that mapped from the storage model to the domain model
      */
     fun <SM : DependentTransformable<DM, D>, DM, D> SM?.mapToDomain(dependency: D): DM? = this?.transform(dependency)
 
     /**
-     * Маппинг списка storage моделей в список domain моделей.
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel.
+     * Mapping a list of storage models to a list of domain models.
+     * Used generics: SM - StorageModel, DM - DomainModel.
      *
-     * @return список, внутри которого был произведён маппинг данных из storage моделей в domain модели
+     * @return a list, inside which storage models mapped to domain models
      */
     fun <SM : SimpleTransformable<DM>, DM> List<SM>?.mapListToDomain(): List<DM> =
         this?.map { storageModel -> storageModel.transform() } ?: emptyList()
 
     /**
-     * Маппинг списка storage моделей в список domain моделей.
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel, D - Dependency.
+     * Mapping a list of storage models to a list of domain models.
+     * Used generics: SM - StorageModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * @return список, внутри которого был произведён маппинг данных из storage моделей в domain модели
+     * @return a list, inside which storage models mapped to domain models
      */
     fun <SM : DependentTransformable<DM, D>, DM, D> List<SM>?.mapListToDomain(
         dependency: D,
@@ -52,21 +52,21 @@ interface StorageMapper {
         this?.map { storageModel -> storageModel.transform(dependency) } ?: emptyList()
 
     /**
-     * Маппинг storage модели в domain модель внутри [Flow].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel.
+     * Mapping the storage model to the domain model inside the [Flow].
+     * Used generics: SM - StorageModel, DM - DomainModel.
      *
-     * @return [Flow] внутри которого был произведён маппинг данных из storage модели в domain модель
+     * @return the [Flow], inside which the storage model mapped to the domain model
      */
     fun <SM : SimpleTransformable<DM>, DM> Flow<SM?>.mapToDomain(): Flow<DM?> =
         map { storageModel -> storageModel?.transform() }
 
     /**
-     * Маппинг storage модели в domain модель внутри [Flow].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel, D - Dependency.
+     * Mapping the storage model to the domain model inside the [Flow].
+     * Used generics: SM - StorageModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * @return [Flow] внутри которого был произведён маппинг данных из storage модели в domain модель
+     * @return the [Flow], inside which the storage model mapped to the domain model
      */
     fun <SM : DependentTransformable<DM, D>, DM, D> Flow<SM?>.mapToDomain(
         dependency: D,
@@ -74,21 +74,21 @@ interface StorageMapper {
         map { storageModel -> storageModel?.transform(dependency) }
 
     /**
-     * Маппинг списка storage моделей в список domain моделей внутри [Flow].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel.
+     * Mapping a list of storage models to a list of domain models inside the [Flow].
+     * Used generics: SM - StorageModel, DM - DomainModel.
      *
-     * @return [Flow] внутри которого был произведён маппинг данных из storage моделей в domain модели
+     * @return the [Flow], inside which storage models mapped to domain models
      */
     fun <SM : SimpleTransformable<DM>, DM> Flow<List<SM>?>.mapListToDomain(): Flow<List<DM>> =
         map { storageModels -> storageModels?.map { it.transform() } ?: emptyList() }
 
     /**
-     * Маппинг списка storage моделей в список domain моделей внутри [Flow].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel, D - Dependency.
+     * Mapping a list of storage models to a list of domain models inside the [Flow].
+     * Used generics: SM - StorageModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * @return [Flow] внутри которого был произведён маппинг данных из storage моделей в domain модели
+     * @return the [Flow], inside which storage models mapped to domain models
      */
     fun <SM : DependentTransformable<DM, D>, DM, D> Flow<List<SM>?>.mapListToDomain(
         dependency: D,
@@ -96,25 +96,25 @@ interface StorageMapper {
         map { storageModels -> storageModels?.map { it.transform(dependency) } ?: emptyList() }
 
     /**
-     * Маппинг storage модели в domain модель внутри [Flow] и заворачивание результата в [Response].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel.
+     * Mapping the storage model to the domain model inside the [Flow] and wrapping the result to the [Response].
+     * Used generics: SM - StorageModel, DM - DomainModel.
      *
-     * @return [FlowResponse] c состоянием ответа от хранилища, внутри которого
-     * был произведён маппинг данных внутри состояния [Response.Success]
-     * из storage модели в domain модель
+     * @return the [FlowResponse] with the storage response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from the storage model to the domain model
      */
     fun <SM : SimpleTransformable<DM>, DM> Flow<SM?>.mapToDomainResponse(): FlowResponse<DM> =
         mapToDomain().wrapToResponse()
 
     /**
-     * Маппинг storage модели в domain модель внутри [Flow] и заворачивание результата в [Response].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel, D - Dependency.
+     * Mapping the storage model to the domain model inside the [Flow] and wrapping the result to the [Response].
+     * Used generics: SM - StorageModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * @return [FlowResponse] c состоянием ответа от хранилища, внутри которого
-     * был произведён маппинг данных внутри состояния [Response.Success]
-     * из storage модели в domain модель
+     * @return the [FlowResponse] with the storage response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from the storage model to the domain model
      */
     fun <SM : DependentTransformable<DM, D>, DM, D> Flow<SM?>.mapToDomainResponse(
         dependency: D,
@@ -122,25 +122,25 @@ interface StorageMapper {
         mapToDomain(dependency).wrapToResponse()
 
     /**
-     * Маппинг списка storage моделей в список domain моделей внутри [Flow] и заворачивание результата в [Response].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel.
+     * Mapping a list of storage models to a list of domain models inside the [Flow] and wrapping the result to the [Response].
+     * Used generics: SM - StorageModel, DM - DomainModel.
      *
-     * [FlowResponse] c состоянием ответа от хранилища, внутри которого
-     * был произведён маппинг данных внутри состояния [Response.Success]
-     * из storage моделей в domain модели
+     * @return the [FlowResponse] with the storage response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from storage models to domain models
      */
     fun <SM : SimpleTransformable<DM>, DM> Flow<List<SM>?>.mapListToDomainResponse(): FlowResponse<List<DM>> =
         mapListToDomain().wrapToResponse()
 
     /**
-     * Маппинг списка storage моделей в список domain моделей внутри [Flow] и заворачивание результата в [Response].
-     * Используемые обобщённые типы: SM - StorageModel, DM - DomainModel, D - Dependency.
+     * Mapping a list of storage models to a list of domain models inside the [Flow] and wrapping the result to the [Response].
+     * Used generics: SM - StorageModel, DM - DomainModel, D - Dependency.
      *
-     * @param dependency зависимость, необходимая для осуществления трансформации
+     * @param dependency dependency required to implement mapping
      *
-     * [FlowResponse] c состоянием ответа от хранилища, внутри которого
-     * был произведён маппинг данных внутри состояния [Response.Success]
-     * из storage моделей в domain модели
+     * @return the [FlowResponse] with the storage response,
+     * inside which the data inside the [Response.Success] state
+     * mapped from storage models to domain models
      */
     fun <SM : DependentTransformable<DM, D>, DM, D> Flow<List<SM>?>.mapListToDomainResponse(
         dependency: D,

@@ -9,7 +9,7 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 private typealias CiceroneFragmentScreen = com.github.terrakok.cicerone.androidx.FragmentScreen
 
 /**
- * Реализация [Navigator] с поддержкой навигации для dialog'ов и с дефолтной анимацией транзакций fragment'ов.
+* Implementation of the [Navigator] with navigation support for dialogs and with default animation of fragment transactions.
  */
 open class ScreenNavigator @JvmOverloads constructor(
     activity: FragmentActivity,

@@ -11,13 +11,13 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
 /**
- * Базовая activity с поддержкой навигации.
+ * The base activity with Cicerone navigation support.
  *
- * @param contentLayoutId layout id вёрстки для activity
- * @param vbClass класс view binding, связанный с activity
+ * @param contentLayoutId the id of the layout for the activity
+ * @param vbClass the class of the view binding associated with the activity
  *
- * @property navigatorHolder контейнер, содержащий используемый navigator
- * @property navigator навигатор, который использует activity
+ * @property navigatorHolder the holder containing the navigator used
+ * @property navigator the navigator that is using the activity
  */
 abstract class NavigationActivity<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
@@ -58,9 +58,9 @@ abstract class NavigationActivity<VM : BaseViewModel, VB : ViewBinding, N : Navi
     }
 
     /**
-     * Создать навигатор, который будет использовать activity.
+     * Create a navigator that will use the activity.
      *
-     * @return навигатор для activity
+     * @return the navigator for the activity
      */
     protected abstract fun createNavigator(): N
 }

@@ -1,12 +1,12 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.route.base
 
 /**
- * Базовый интерфейс route для экрана.
+ * The base interface for route of the screen.
  */
 interface Route {
 
     /**
-     * Набор констант для идентификации параметров экрана при их передаче через route.
+     * A set of constants for identifying screen parameters when passing them through route.
      */
     companion object {
 

@@ -6,10 +6,10 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
 /**
- * Базовый класс делегата для view model, инкапсулирующий логику навигации.
+ * The base class for the delegate that contains navigation logic.
  *
- * @property route роут экрана для получения пареданных параметров
- * @property router роутер для осуществления навигации между экранами
+ * @property route screen route to get passed parameters
+ * @property router router for navigating between screens
  */
 abstract class AbstractNavDelegate<ROUTER : Router, ROUTE : Route> {
 
@@ -18,28 +18,28 @@ abstract class AbstractNavDelegate<ROUTER : Router, ROUTE : Route> {
     protected abstract val router: ROUTER
 
     /**
-     * Закрыть экран.
+     * Close the screen.
      */
     fun exit() {
         router.exit()
     }
 
     /**
-     * Отправить результат работы экрана.
+     * Send the result of the screen.
      *
-     * @param key ключ, идентифицирующий отправляемый результат
-     * @param screenResult результат работы экрана
+     * @param key a key identifying the result being sent
+     * @param screenResult the result of the screen
      */
     protected fun <T : Any> Router.sendScreenResult(key: String, screenResult: T) {
         sendResult(key, screenResult)
     }
 
     /**
-     * Получить результат работы экрана.
+     * Get the result of the screen.
      *
-     * @param key ключ, идентифицирующий получаемый результат
+     * @param key a key identifying the received result
      *
-     * @return результат работы экрана
+     * @return the result of the screen
      */
     protected suspend inline fun <reified T : Any> Router.getScreenResult(key: String): T =
         suspendCancellableCoroutine { continuation ->

@@ -1,14 +1,14 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.error_handler
 
 /**
- * Базовый интерфейс обработчика ошибок.
+ * The base interface of error handler.
  */
 interface ErrorHandler {
 
     /**
-     * Обработать полученную ошибку.
+     * Handle the received error.
      *
-     * @param error ошибка для обработки
+     * @param error the error for handling
      */
     fun handleError(error: Throwable)
 }

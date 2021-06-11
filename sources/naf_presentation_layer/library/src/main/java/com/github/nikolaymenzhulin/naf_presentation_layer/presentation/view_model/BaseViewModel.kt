@@ -3,6 +3,6 @@ package com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mod
 import androidx.lifecycle.ViewModel
 
 /**
- * Базовый класс view model.
+ * The base class of a view model.
  */
 abstract class BaseViewModel : ViewModel()

@@ -9,10 +9,10 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
 import com.github.terrakok.cicerone.Navigator
 
 /**
- * Базовая activity, оборачивающая основные методы жизненного цикла.
+ * The base activity that wraps lifecycle methods.
  *
- * @param contentLayoutId layout id вёрстки для activity
- * @param vbClass класс view binding, связанный с activity
+ * @param contentLayoutId the id of the layout for the activity
+ * @param vbClass the class of the view binding associated with the activity
  */
 abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,
@@ -130,8 +130,8 @@ abstract class LifecycleWrapperActivity<VM : BaseViewModel, VB : ViewBinding, N 
     }
 
     /**
-     * Callback для подписки на данные из view model.
-     * Вызывается на этапе выполнения onCreate, после вызовов super.onCreate и onCreateCallback.
+     * The callback to subscribe to data from view model.
+     * Called at the onCreate call, after calls super.onCreate and onCreateCallback.
      */
     protected abstract fun onObserveViewModelCallback()
 }

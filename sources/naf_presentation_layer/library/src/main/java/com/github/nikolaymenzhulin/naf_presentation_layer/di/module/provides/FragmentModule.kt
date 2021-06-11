@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 /**
- * Базовый Dagger-модуль, предоставляющий основные зависимости для экрана, основанного на fragment.
+ * The base Dagger module that provides basic dependencies for an fragment-based screen.
  */
 @Module
 abstract class FragmentModule<R : Route>(private val route: R) : DaggerModule {

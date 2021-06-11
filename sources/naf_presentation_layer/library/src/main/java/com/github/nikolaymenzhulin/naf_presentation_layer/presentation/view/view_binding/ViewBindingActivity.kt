@@ -14,13 +14,13 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.view
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_model.BaseViewModel
 
 /**
- * Базовая activity с поддержкой работы с view binding.
+ * The base activity with support for working with a view binding.
  *
- * @param contentLayoutId layout id вёрстки для activity
- * @param vbClass класс view binding, связанный с activity
+ * @param contentLayoutId the id of the layout for the activity
+ * @param vbClass the class of the view binding associated with the activity
  *
- * @property vb view binding, связанный с activity
- * @property vbCreateMethodType тип создания view binding
+ * @property vb the view binding associated with the activity
+ * @property vbCreateMethodType the creation type of the view binding
  */
 abstract class ViewBindingActivity<VM : BaseViewModel, VB : ViewBinding>(
     @LayoutRes contentLayoutId: Int,

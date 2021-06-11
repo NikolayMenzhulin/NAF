@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 /**
- * Базовый Dagger-модуль, предоставляющий основные зависимости для диалога, основанного на dialog fragment или bottom sheet fragment.
+ * The base Dagger module that provides basic dependencies for dialogs.
  */
 @Module
 abstract class FragmentDialogModule<R : Route>(private val route: R) : DaggerModule {

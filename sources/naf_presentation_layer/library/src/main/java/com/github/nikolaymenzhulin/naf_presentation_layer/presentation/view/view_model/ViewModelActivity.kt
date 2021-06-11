@@ -16,12 +16,12 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 /**
- * Базовая activity с поддержкой работы с view model.
+ * The base activity with support for working with a view model.
  *
- * @param contentLayoutId layout id вёрстки для activity
+ * @param contentLayoutId the id of the layout for the activity
  *
- * @property vmFactory фабрика для создания view model
- * @property vm view model, связанная с activity
+ * @property vmFactory the factory for creating the view model
+ * @property vm the view model associated with the activity
  */
 abstract class ViewModelActivity<VM : BaseViewModel>(
     @LayoutRes contentLayoutId: Int
@@ -46,10 +46,10 @@ abstract class ViewModelActivity<VM : BaseViewModel>(
     }
 
     /**
-     * Подписаться на данные из [Flow].
+     * Observe the data inside the [Flow].
      *
-     * @param lifecycleOwner жизненный цикл view для привязки к нему состояния подписки
-     * @param observer действия для выполнения при получении данных от [Flow]
+     * @param lifecycleOwner the lifecycle of a view to bind the subscription state to it
+     * @param observer actions to perform when receiving data from the [Flow]
      */
     protected fun <T> Flow<T>.observe(lifecycleOwner: LifecycleOwner, observer: (T) -> Unit) {
         lifecycleOwner.lifecycleScope.launchWhenStarted {

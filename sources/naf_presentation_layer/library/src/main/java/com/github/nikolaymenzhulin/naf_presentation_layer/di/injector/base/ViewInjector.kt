@@ -4,24 +4,24 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.di.component.ViewCompo
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base.InjectableView
 
 /**
- * Базовый интерфейс для класса - инжектора зависимостей во view.
+ * The base interface for a class is a dependency injector in a view.
  */
 internal interface ViewInjector<V : InjectableView> : Injector {
 
     /**
-     * Инициализировать Dagger-компонент для view.
+     * Initialize the Dagger component for a view.
      */
     fun initComponent()
 
     /**
-     * Получить Dagger-компонент для view, который будет использоваться для инъекции зависимостей.
+     * Get the Dagger component for a view that will be used for dependency injection.
      *
-     * @return компонент для view
+     * @return the component for the view
      */
     fun getViewComponent(): ViewComponent<V>
 
     /**
-     * Очистить Dagger-компонент для view.
+     * Clear the Dagger component for a view.
      */
     fun clearComponent()
 }

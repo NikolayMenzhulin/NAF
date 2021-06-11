@@ -1,6 +1,6 @@
 package com.github.nikolaymenzhulin.naf_presentation_layer.di.component
 
 /**
- * Базовый интерфейс для всех Dagger-компонентов.
+ * The base interface for all Dagger components.
  */
 interface DaggerComponent

@@ -8,28 +8,28 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navi
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navigation.route.base.Route
 
 /**
- * Базовый класс route для экрана, основанного на fragment.
+ * The base route class for the fragment-based screen.
  */
 abstract class AbstractFragmentRoute<F : Fragment> : Route {
 
     /**
-     * Создать fragment для открываемого экрана.
+     * Create a fragment for the screen to open.
      *
-     * @return fragment для открываемого экрана.
+     * @return the fragment for the screen to open
      */
     protected abstract fun getFragment(): F
 
     /**
-     * Создать [FragmentScreen] для открываемого экрана.
+     * Create an [FragmentScreen] for the screen to open.
      *
-     * @param key ключ, идентифицирующий открываемый экран
-     * @param clearContainer заменять ли текущий открытый экран открываемым
-     * @param enterAnimResId анимация fragment'а на который переходим
-     * @param exitAnimResId анимация fragment'а с которого переходим
-     * @param popEnterAnimResId анимация fragment'а на который возвращаемся
-     * @param popExitAnimResId анимация fragment'а с которого возвращаемся
+     * @param key key identifying the screen to open
+     * @param clearContainer whether to replace the current open screen with an openable one
+     * @param enterAnimResId animation of the fragment to which we go
+     * @param exitAnimResId animation of the fragment from which we move
+     * @param popEnterAnimResId animation of the fragment to which we return
+     * @param popExitAnimResId animation of the fragment from which we return
      *
-     * @return [FragmentScreen] для открываемого экрана
+     * @return the [FragmentScreen] for the screen to open
      */
     operator fun invoke(
         key: String = this::class.java.name,

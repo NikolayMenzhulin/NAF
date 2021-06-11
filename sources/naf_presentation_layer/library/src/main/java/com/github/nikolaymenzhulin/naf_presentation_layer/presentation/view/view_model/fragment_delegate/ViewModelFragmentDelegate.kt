@@ -8,7 +8,7 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
 import kotlinx.coroutines.Job
 
 /**
- * Делегат, инкапсулирующий общую логику всех view model fragment'ов.
+ * The delegate that contains the common logic for view model fragments.
  */
 internal class ViewModelFragmentDelegate(private val fragment: Fragment) {
 

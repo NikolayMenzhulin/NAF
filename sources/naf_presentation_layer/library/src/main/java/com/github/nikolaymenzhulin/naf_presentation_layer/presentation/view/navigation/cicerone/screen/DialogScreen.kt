@@ -6,7 +6,7 @@ import com.github.terrakok.cicerone.Screen
 import com.github.terrakok.cicerone.androidx.Creator
 
 /**
- * Реализация [Screen] для dialog fragment и bottom sheet fragment.
+ * Implementation of the [Screen] for dialogs.
  */
 interface DialogScreen : Screen {
 

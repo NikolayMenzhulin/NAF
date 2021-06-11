@@ -7,10 +7,11 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view_mode
 import com.github.terrakok.cicerone.Navigator
 
 /**
- * Базовый класс для реализации activity с поддержкой инъекции зависимостей, работы с view model, view binding и с навигацией.
+ * The base class for implementing an activity with support for
+ * dependency injection, working with the view model, view binding and Cicerone navigation.
  *
- * @param contentLayoutId layout id вёрстки для activity
- * @param vbClass класс view binding, связанный с activity
+ * @param contentLayoutId the id of the layout for the activity
+ * @param vbClass the class of the view binding associated with the activity
  */
 abstract class AbstractActivity<VM : BaseViewModel, VB : ViewBinding, N : Navigator>(
     @LayoutRes contentLayoutId: Int,

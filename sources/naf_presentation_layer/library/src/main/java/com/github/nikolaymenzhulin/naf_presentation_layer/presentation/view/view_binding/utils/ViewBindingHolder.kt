@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 
 /**
- * Класс-контейнер для view binding.
+ * The holder class for the view binding.
  *
- * @param vbClass класс view binding, хранящегося в контейнере
+ * @param vbClass the class of the view binding that contains inside a holder
  *
- * @property vb view binding, хранящийся в контейнере
+ * @property vb the view binding that contains inside a holder
  */
 @Suppress("UNCHECKED_CAST")
 internal class ViewBindingHolder<VB : ViewBinding>(private val vbClass: Class<VB>) {
@@ -19,7 +19,7 @@ internal class ViewBindingHolder<VB : ViewBinding>(private val vbClass: Class<VB
         private set
 
     /**
-     * Инициализировать [vb] через метод inflate.
+     * Initialize the [vb] using inflate method.
      */
     fun initViewBinding(layoutInflater: LayoutInflater) {
         if (vb != null) return
@@ -28,7 +28,7 @@ internal class ViewBindingHolder<VB : ViewBinding>(private val vbClass: Class<VB
     }
 
     /**
-     * Инициализировать [vb] через метод inflate.
+     * Initialize the [vb] using inflate method.
      */
     fun initViewBinding(layoutInflater: LayoutInflater, parent: ViewGroup? = null, attachToParent: Boolean) {
         if (vb != null) return
@@ -37,7 +37,7 @@ internal class ViewBindingHolder<VB : ViewBinding>(private val vbClass: Class<VB
     }
 
     /**
-     * Инициализировать [vb] через метод bind.
+     * Initialize the [vb] using inflate bind.
      */
     fun initViewBinding(view: View) {
         if (vb != null) return
@@ -46,7 +46,7 @@ internal class ViewBindingHolder<VB : ViewBinding>(private val vbClass: Class<VB
     }
 
     /**
-     * Очистить [vb], хранящийся в контейнере.
+     * Clear the [vb] that contains inside a holder.
      */
     fun clearViewBinding() {
         vb = null

@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.base.InjectableView
 
 /**
- * Базовая activity с поддержкой инъекции зависимостей.
+ * The base activity with support for dependency injection.
  *
- * @param contentLayoutId layout id вёрстки для activity
+ * @param contentLayoutId the id of the layout for the activity
  */
 abstract class InjectableActivity(
     @LayoutRes contentLayoutId: Int

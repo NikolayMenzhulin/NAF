@@ -7,24 +7,24 @@ import com.github.nikolaymenzhulin.naf_presentation_layer.presentation.view.navi
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 
 /**
- * Базовый класс route для экрана, основанного на activity.
+ * The base route class for the activity-based screen.
  */
 abstract class AbstractActivityRoute : Route {
 
     /**
-     * Создать activity intent для открываемого экрана.
+     * Create an activity intent for the screen to open.
      *
-     * @return activity intent для открываемого экрана
+     * @return the activity intent for the screen to open
      */
     protected abstract fun getIntent(context: Context): Intent
 
     /**
-     * Создать [ActivityScreen] для открываемого экрана.
+     * Create an [ActivityScreen] for the screen to open.
      *
-     * @param key ключ, идентифицирующий открываемый экран
-     * @param startActivityOptions параметры открываемого экрана
+     * @param key key identifying the screen to open
+     * @param startActivityOptions options for the screen to open
      *
-     * @return [ActivityScreen] для открываемого экрана
+     * @return the [ActivityScreen] for the screen to open
      */
     operator fun invoke(
         key: String = this::class.java.name,
