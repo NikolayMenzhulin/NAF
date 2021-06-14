@@ -24,5 +24,18 @@ allprojects {
         android_base_module = "$baseBuildConfigsDir/androidBaseModule.gradle"
         android_library_module = "$baseBuildConfigsDir/androidLibraryModule.gradle"
         android_sample_module = "$baseBuildConfigsDir/androidSampleModule.gradle"
+        publishing_gradle = "$baseBuildConfigsDir/publishing.gradle"
     }
+}
+
+task publishAll {
+    dependsOn 'naf_service_layer:publish'
+    dependsOn 'naf_presentation_layer:publish'
+    tasks.findByPath(':naf_presentation_layer:signMavenAndroidPublication').mustRunAfter ':naf_service_layer:publish'
+}
+
+task publishAllToMavenLocal {
+    dependsOn 'naf_service_layer:publishToMavenLocal'
+    dependsOn 'naf_presentation_layer:publishToMavenLocal'
+    tasks.findByPath(':naf_presentation_layer:signMavenAndroidPublication').mustRunAfter ':naf_service_layer:publish'
 }

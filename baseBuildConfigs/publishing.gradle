@@ -1,0 +1,70 @@
+import com.github.nikolaymenzhulin.build_src.PublishingConfig
+
+apply plugin: ('maven-publish')
+apply plugin: ('signing')
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+}
+
+task withSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task withJavadocJar(type: Jar) {
+    from androidJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            mavenAndroid(MavenPublication) {
+                from components.release
+                artifact withJavadocJar
+                artifact withSourcesJar
+                pom {
+                    groupId = PublishingConfig.GROUP_ID
+                    artifactId = project.name
+                    version = System.getenv('RELEASE_VERSION')
+
+                    name = PublishingConfig.getName(project.name)
+                    description = PublishingConfig.getDescription(project.name)
+                    url = PublishingConfig.getUrl(project.name)
+
+                    licenses {
+                        license {
+                            name = PublishingConfig.LICENCE_NAME
+                            url = PublishingConfig.LICENCE_URL
+                        }
+                    }
+                    developers {
+                        developer {
+                            name = PublishingConfig.DEVELOPER_NAME
+                            email = PublishingConfig.DEVELOPER_EMAIL
+                        }
+                    }
+                    scm {
+                        connection = PublishingConfig.SCM_CONNECTION
+                        developerConnection = PublishingConfig.SCM_DEVELOPER_CONNECTION
+                        url = PublishingConfig.SCM_URL
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+                credentials {
+                    username = findProperty('sonatype_username')
+                    password = findProperty('sonatype_password')
+                }
+            }
+        }
+    }
+
+    signing {
+        sign publishing.publications.mavenAndroid
+    }
+}
